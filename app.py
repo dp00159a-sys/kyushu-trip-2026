@@ -162,7 +162,7 @@ with tab1:
         st.markdown("### 🛍️ 16:30 天神北攻略")
         st.write("交通：JR回博多 → 轉地鐵到【天神站】(往東口/1號出口)。")
         st.write("🥖 **必買：Full Full 明太子法棍** (Mina天神對面)")
-        st.link_button("📍 導航：Full Full 天神", "https://www.google.com/maps/search/?api=1&query=Full+Full+Hakata")
+        st.link_button("📍 導航：Full Full 天神", "https://maps.app.goo.gl/TPsykr18X13q4NyCA")
         st.write("🍰 **下午茶：** 天神地下街 BAKE 起司塔 / RINGO 蘋果派")
         
         st.markdown("### 🍤 17:45 晚餐：天麩羅 Hirao")
@@ -301,3 +301,4 @@ with tab3:
 # 頁尾
 st.divider()
 st.caption("Made with ❤️ for 2026 Family Trip")
+
