@@ -356,8 +356,9 @@ with tab3:
     
     st.markdown("### ✅ Day 4: 音速號 (已購買)")
     st.success("博多 ↔ 小倉")
+    # 修改點：在 div 加入 style="color: #333333;" 強制字體為黑色
     st.markdown("""
-    <div class="ticket-box">
+    <div class="ticket-box" style="color: #333333;">
     <b>去程 (Sonic 11):</b> 09:21 → 10:10<br>
     座位：<span class="highlight">3號車 3AB, 4AB</span><br>
     <hr style="margin:5px 0; border-top: 1px dashed #1ABC9C;">
@@ -368,8 +369,9 @@ with tab3:
 
     st.markdown("### ✅ Day 5: 新幹線 (已購買)")
     st.success("博多 ↔ 熊本")
+    # 修改點：同樣加入 style="color: #333333;"
     st.markdown("""
-    <div class="ticket-box">
+    <div class="ticket-box" style="color: #333333;">
     <b>去程 (Mizuho 601):</b> 08:30 → 09:02<br>
     座位：<span class="highlight">5號車 5AB, 6AB</span><br>
     <hr style="margin:5px 0; border-top: 1px dashed #1ABC9C;">
@@ -382,5 +384,6 @@ with tab3:
     st.markdown("### 🍽️ 餐廳預約")
     st.success("藥院燒肉 肉一：3/2 19:00 (4人)")
     st.caption("預約大名：鄭又豪 先生")
+
 
 
