@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as pd
+import os
 
 # --------------------------
 # 1. App 基礎設定
@@ -11,7 +11,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 自訂 CSS：優化手機閱讀體驗與按鈕大小
+# 自訂 CSS：優化視覺與操作感
 st.markdown("""
     <style>
     .stButton>button {
@@ -23,47 +23,67 @@ st.markdown("""
         background-color: #ffffff;
         color: #333333;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: all 0.3s;
     }
     .stButton>button:hover {
         border-color: #FF4B4B;
         color: #FF4B4B;
         background-color: #FFF0F0;
+        transform: translateY(-2px);
     }
-    /* 強調關鍵字 */
-    .highlight {
-        color: #E74C3C;
-        font-weight: bold;
-        background-color: #FDEDEC;
-        padding: 2px 5px;
-        border-radius: 4px;
-    }
-    /* 路線指引區塊 */
     .route-box {
         background-color: #F4F6F7;
         padding: 15px;
         border-radius: 10px;
         border-left: 5px solid #2980B9;
         margin-bottom: 10px;
+        font-size: 0.95em;
     }
-    h1 { color: #C0392B; }
-    h2 { border-bottom: 2px solid #E74C3C; padding-bottom: 5px; margin-top: 30px; font-size: 24px;}
-    h3 { color: #2E86C1; margin-top: 20px; }
+    .ticket-box {
+        background-color: #E8F8F5;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px dashed #1ABC9C;
+        margin-bottom: 10px;
+    }
+    .shopping-box {
+        background-color: #FEF9E7;
+        padding: 15px;
+        border-radius: 10px;
+        border-left: 5px solid #F1C40F;
+        margin-bottom: 10px;
+    }
+    .time-badge {
+        background-color: #ECEFF1;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: bold;
+        color: #455A64;
+        margin-right: 5px;
+    }
+    .highlight {
+        background-color: #FDEDEC;
+        padding: 2px 5px;
+        border-radius: 3px;
+        color: #C0392B;
+        font-weight: bold;
+    }
+    h1 { color: #C0392B; text-align: center; }
+    h2 { border-bottom: 2px solid #E74C3C; padding-bottom: 5px; margin-top: 30px;}
     </style>
     """, unsafe_allow_html=True)
 
-# 標題
 st.title("🎌 2026 北九州舒活孝親行")
-st.caption("Family Trip: 2026/3/1 (日) - 3/6 (五)")
-st.info("💡 點擊按鈕可直接開啟 Google Maps 導航")
+st.caption("Family Trip: 2026/3/1 (日) - 3/6 (五) | 不趕路、精確轉乘、美食優先")
 
 # --------------------------
 # 2. 核心分頁
 # --------------------------
-tab1, tab2, tab3 = st.tabs(["📅 詳細行程", "🛍️ 購物清單", "🎫 票券與備忘"])
+tab1, tab2, tab3 = st.tabs(["📅 詳細行程", "🛍️ 購物清單", "🎫 車票與預約"])
 
-# === Tab 1: 每日行程導航 ===
+# === Tab 1: 每日行程 ===
 with tab1:
-    day = st.selectbox("請選擇日期：", 
+    day = st.selectbox("請選擇日期查看詳情：", 
         ["Day 1 (3/1): 啟程 & 飯店補給", 
          "Day 2 (3/2): 太宰府 & 燒肉", 
          "Day 3 (3/3): 海豚 & 天神購物", 
@@ -77,228 +97,261 @@ with tab1:
     if "Day 1" in day:
         st.header("Day 1: 啟程與補給")
         
-        st.markdown("### 🚄 12:00 高鐵台中站")
-        st.write("目標：桃園機場 T2 (BR102 / 16:25 起飛)")
+        st.markdown("##### <span class='time-badge'>12:00</span> 出發", unsafe_allow_html=True)
+        st.write("高鐵台中站 → 桃園機場 T2 (BR102 / 16:25 起飛)")
         
-        st.markdown("### 🛬 19:55 抵達福岡 (接駁)")
-        st.info("1. 出國際航廈大門，左轉找 **1號站牌**。\n2. 搭乘藍色 **「國際線-國內線接駁巴士」** (約15分)。\n3. 終點站下車即是地鐵入口。")
+        st.markdown("##### <span class='time-badge'>19:55</span> 抵達福岡機場", unsafe_allow_html=True)
+        st.info("動線：出航廈大門左轉 → 1 號站牌 (接駁巴士) → 地鐵福岡機場站。")
         
-        st.markdown("### 🚇 21:20 地鐵轉乘 (關鍵!)")
+        st.markdown("##### <span class='time-badge'>21:20</span> 地鐵轉乘 (關鍵)", unsafe_allow_html=True)
         st.markdown("""
         <div class="route-box">
-        <b>Step 1:</b> 【福岡機場站】搭空港線 (往姪浜/唐津) → <b>【博多站】</b><br>
-        <b>Step 2 (不出站):</b> 下車找地上綠色貼紙<b>「七隈線」</b>，走連通道 (電動步道約6分)。<br>
-        <b>Step 3:</b> 搭七隈線 (往橋本) → <b>【渡邊通站】</b> (1站)。
+        <b>Step 1:</b> 【福岡機場站】搭空港線 → <b>【博多站】</b><br>
+        <b>Step 2:</b> 走連通道轉七隈線 (電動步道約 6 分鐘)。<br>
+        <b>Step 3:</b> 搭七隈線 (往橋本方向 1 站) → <b>【渡邊通站】</b>。
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("### 🏨 22:00 入住飯店")
-        st.markdown("""
-        <div class="route-box">
-        <b>出口：</b> 找 <b>【2 號出口】</b> (有手扶梯)。<br>
-        <b>動線：</b> 出站左轉，直走過橋 (雷橋)，飯店在左手邊。
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>22:00</span> 入住飯店", unsafe_allow_html=True)
+        st.write("出口：**2號出口** (有手扶梯)。出站左轉過橋即達。")
         st.link_button("📍 導航：Cross Life 博多柳橋", "https://www.google.com/maps/search/?api=1&query=Cross+Life+Hakata+Yanagibashi")
         
-        st.markdown("### 🏪 22:30 宵夜採買")
-        st.write("**Sunny 超市 渡邊通店** (飯店出門右轉1分鐘)")
+        st.markdown("##### <span class='time-badge'>22:30</span> 宵夜補給", unsafe_allow_html=True)
+        st.write("購買大瓶水、草莓、優格、隔日早餐。")
         st.link_button("📍 導航：Sunny 超市", "https://www.google.com/maps/search/?api=1&query=Sunny+Watanabedori")
-        st.success("📝 必買：大瓶水(2L)、博多草莓、優格、明天早餐。")
 
     # --- Day 2 ---
     elif "Day 2" in day:
         st.header("Day 2: 太宰府 & 燒肉")
         
-        st.markdown("### 🥐 09:00 早餐 & 準備")
-        st.write("地鐵：【渡邊通】→【博多站】(往博多口出站)")
         col1, col2 = st.columns(2)
         with col1:
-            st.link_button("📍 DACOMECCA (麵包)", "https://www.google.com/maps/search/?api=1&query=DACOMECCA")
+            st.markdown("##### <span class='time-badge'>08:30</span> 早餐", unsafe_allow_html=True)
+            st.write("挑戰排隊名店或吃麥當勞。")
+            st.link_button("📍 DACOMECCA", "https://www.google.com/maps/search/?api=1&query=DACOMECCA")
         with col2:
-            st.link_button("📍 麥當勞 (博多站)", "https://www.google.com/maps/search/?api=1&query=McDonald's+Hakata+Bus+Terminal")
+            st.markdown("##### <span class='time-badge'>09:30</span> 移動", unsafe_allow_html=True)
+            st.write("地鐵至【天神站】轉西鐵。")
+            st.link_button("📍 麥當勞", "https://www.google.com/maps/search/?api=1&query=McDonald's+Hakata+Bus+Terminal")
             
-        st.markdown("### ⛩️ 10:30 前往太宰府")
+        st.markdown("##### <span class='time-badge'>10:00</span> 前往太宰府 (西鐵)", unsafe_allow_html=True)
         st.markdown("""
         <div class="route-box">
-        <b>1. 地鐵：</b> 博多站 → <b>【天神站】</b><br>
-        <b>2. 轉乘 (不出站)：</b> 依黃色指標「西鐵電車」走地下街上2樓。<br>
-        <b>3. 西鐵：</b> 搭特急/急行 → <b>【二日市】</b> 換車 → <b>【太宰府】</b>。
+        <b>1. 搭車：</b> 西鐵天神站 (2F/3F) 搭特急/急行 (往大牟田)。<br>
+        <b>2. 換車：</b> 在 <b>【西鐵二日市站】</b> 下車。<br>
+        <b>3. 轉乘：</b> 同月台或換月台轉搭「太宰府線」。
         </div>
         """, unsafe_allow_html=True)
-        st.write("🌸 **必吃甜點：** 梅枝餅 (卡薩乃家)、星巴克表參道店。")
         st.link_button("📍 導航：太宰府天滿宮", "https://www.google.com/maps/search/?api=1&query=Dazaifu+Tenmangu")
         
-        st.markdown("### 🛍️ 17:10 天神購物 (PLST)")
-        st.write("回程：西鐵回到【天神站】→ 走往 **北口**。")
-        st.write("地點：**Mina 天神** 1F (Uniqlo同棟)")
+        st.markdown("##### <span class='time-badge'>15:00</span> 天神地下街 & 購物", unsafe_allow_html=True)
+        st.info("🛍️ **雨天/避暑備案：** 從西鐵天神站地下街一路逛到 Mina 天神，舒適不累。")
+        st.link_button("📍 導航：天神地下街", "https://maps.app.goo.gl/x5cvCFQsm8CpkkUH9")
+        st.write("**Mina 天神**：UNIQLO, LOFT, 3COINS")
         st.link_button("📍 導航：Mina 天神", "https://www.google.com/maps/search/?api=1&query=Mina+Tenjin")
         
-        st.markdown("### 🥩 19:00 晚餐：藥院燒肉 肉一")
-        st.info("🚕 **移動建議：** 帶著戰利品，直接從 Mina 天神門口 **搭計程車** (約¥1000)。")
-        st.success("✅ 已預約：19:00 / 藥院店 (Yakuin)")
-        st.link_button("📍 導航：藥院燒肉 肉一", "https://www.google.com/maps/search/?api=1&query=Yakuin+Yakiniku+Nikuichi")
+        st.markdown("##### <span class='time-badge'>18:20</span> 前往晚餐", unsafe_allow_html=True)
+        st.warning("🚕 **建議：** 從天神南搭計程車前往，保留體力。")
         
-        with st.expander("🚨 晚餐備案 & 宵夜"):
-            st.write("1. **博多皮屋 (雞皮)**：祇園附近，適合宵夜。")
-            st.link_button("📍 導航：博多皮屋 祇園店", "https://www.google.com/maps/search/?api=1&query=Hakata+Kawaya+Gion")
-            st.write("2. 回飯店旁吃 **彌昂亭** 定食。")
+        st.markdown("##### <span class='time-badge'>19:00</span> 晚餐：藥院燒肉 肉一", unsafe_allow_html=True)
+        st.success("✅ 已預約：19:00 / 4 位 / 鄭有浩先生")
+        st.link_button("📍 導航：藥院燒肉 肉一", "https://www.google.com/maps/search/?api=1&query=Yakuin+Yakiniku+Nikuichi")
 
     # --- Day 3 ---
     elif "Day 3" in day:
-        st.header("Day 3: 海洋世界 & 天神")
-        st.info("🐬 11:00 海豚秀 (JR 海之中道站)")
+        st.header("Day 3: 海洋世界 & 天麩羅")
         
-        st.markdown("### 🚃 09:30 JR 移動")
+        st.markdown("##### <span class='time-badge'>09:10</span> 出發", unsafe_allow_html=True)
+        st.write("步行至博多車站。")
+        
+        st.markdown("##### <span class='time-badge'>09:30</span> 前往海之中道 (JR)", unsafe_allow_html=True)
         st.markdown("""
         <div class="route-box">
-        <b>1. 進站：</b> 博多站 JR 中央改札口 (1、2月台)。<br>
-        <b>2. 搭車：</b> 鹿兒島本線(快速) → <b>【香椎站】</b>。<br>
-        <b>3. 轉乘：</b> 換月台搭香椎線 → <b>【海之中道站】</b>。
+        <b>Step 1:</b> 博多站 1或2號月台 (鹿兒島本線) → <b>【香椎站】</b> (約09:42發)。<br>
+        <b>Step 2 (⚠️):</b> 香椎站下車，<b>走天橋換到 4/5 號月台</b> (香椎線)。<br>
+        <b>Step 3:</b> 搭 10:05 左右列車 → <b>【海之中道站】</b>。
         </div>
         """, unsafe_allow_html=True)
+        st.link_button("📍 導航：JR 海之中道站", "https://www.google.com/maps/dir/Hakata+Station,+%E4%B8%AD%E5%A4%AE%E8%A1%97-%EF%BC%91-1+%E5%8D%9A%E5%A4%9A%E9%A7%85,+%E5%8D%9A%E5%A4%9A%E5%8C%BA+%E7%A6%8F%E5%B2%A1%E5%B8%82+%E7%A6%8F%E5%B2%A1%E7%9C%8C,+Japan/Uminonakamichi+Station,+Japan/data=!4m18!4m17!1m5!1m1!19sChIJdbP55seRQTURkIu5RT0r4i4!2m2!1d130.4207274!2d33.589727499999995!1m5!1m1!19sChIJ3TdSJLKNQTURNA6c41YcDMU!2m2!1d130.3615228!2d33.6641936!2m3!6e0!7e2!8j1772530200!3e3")
+        
+        st.markdown("##### <span class='time-badge'>11:00</span> 海豚表演", unsafe_allow_html=True)
+        st.write("地點：Marine World (出口即達)")
         st.link_button("📍 導航：Marine World", "https://www.google.com/maps/search/?api=1&query=Marine+World+Uminonakamichi")
         
-        st.markdown("### 🛍️ 16:30 天神北攻略")
-        st.write("交通：JR回博多 → 轉地鐵到【天神站】(往東口/1號出口)。")
-        st.write("🥖 **必買：Full Full 明太子法棍** (Mina天神對面)")
-        st.link_button("📍 導航：Full Full 天神", "https://maps.app.goo.gl/TPsykr18X13q4NyCA")
-        st.write("🍰 **下午茶：** 天神地下街 BAKE 起司塔 / RINGO 蘋果派")
-        
-        st.markdown("### 🍤 17:45 晚餐：天麩羅 Hirao")
-        st.write("地點：大名店 (Daimyo)")
-        st.link_button("📍 導航：天麩羅處 Hirao 大名", "https://www.google.com/maps/search/?api=1&query=Tempura+Hirao+Daimyo")
-        
-        st.markdown("### 🛒 19:30 超市補貨")
-        st.write("**AEON Shoppers 福岡店** (天神北)")
+        st.markdown("##### <span class='time-badge'>16:50</span> 天神北購物", unsafe_allow_html=True)
+        st.write("1. **Full Full 明太子法棍** (天神店)")
+        st.link_button("📍 導航：Full Full 天神", "https://www.google.com/maps/search/?api=1&query=Full+Full+Hakata")
+        st.write("2. **AEON Shoppers** (超市補貨)")
         st.link_button("📍 導航：AEON Shoppers", "https://www.google.com/maps/search/?api=1&query=AEON+Shoppers+Fukuoka")
-        st.info("🚕 **回程：** 東西太多直接搭計程車回飯店。")
+        
+        st.markdown("##### <span class='time-badge'>17:40</span> 晚餐：天麩羅 Hirao", unsafe_allow_html=True)
+        st.info("策略：走路前往大名店，現場排隊 (預計 30-40 分)。")
+        st.link_button("📍 導航：天麩羅處 Hirao 大名", "https://www.google.com/maps/search/?api=1&query=Tempura+Hirao+Daimyo")
 
     # --- Day 4 ---
     elif "Day 4" in day:
-        st.header("Day 4: 門司港 & 超市派對")
-        st.warning("🚅 09:21 音速號 (博多站出發)")
+        st.header("Day 4: 門司港 & 博多站爆買")
         
-        st.markdown("### 🐡 10:30 門司港 & 唐戶市場")
+        st.markdown("##### <span class='time-badge'>09:00</span> 抵達博多站", unsafe_allow_html=True)
+        st.warning("⚠️ 記得帶 **實體信用卡** 去機台領票！")
+        
+        st.markdown("##### <span class='time-badge'>09:21</span> 去程：音速號 Sonic 11", unsafe_allow_html=True)
         st.markdown("""
-        <div class="route-box">
-        <b>1. 去程：</b> 音速號 → <b>【小倉】</b> 轉普通車 → <b>【門司港】</b>。<br>
-        <b>2. 渡輪：</b> 出站左轉搭船 → 下關唐戶。<br>
-        <b>3. 午餐：</b> 唐戶市場 2F 海轉唐戶 (河豚壽司)。
+        <div class="ticket-box">
+        <b>博多 09:21 → 小倉 10:10</b><br>
+        座位：<span class="highlight">3 號車 3AB, 4AB</span> (記得轉椅子)
         </div>
         """, unsafe_allow_html=True)
-        st.link_button("📍 導航：唐戶市場", "https://www.google.com/maps/search/?api=1&query=Karato+Market")
         
-        st.markdown("### 🍦 14:00 下午茶")
-        st.write("**Mooon de Retro** (水果聖代) 或 門司港布丁。")
+        st.markdown("##### <span class='time-badge'>10:10</span> 小倉站轉乘 (免出站)", unsafe_allow_html=True)
+        # 顯示使用者上傳的圖片
+        if os.path.exists("kokura_transfer.jpg"):
+            st.image("kokura_transfer.jpg", caption="💡 攻略：下車後直接走到對面或隔壁月台 (7轉8)", use_column_width=True)
+        else:
+            st.info("💡 攻略：下車後直接走到對面或隔壁月台 (通常是 7 號轉 8 號)，不用上下樓梯。")
+        st.write("搭乘 **鹿兒島本線 (往門司港)** 普通車。")
+        
+        st.markdown("##### <span class='time-badge'>10:40</span> 抵達門司港 & 補票", unsafe_allow_html=True)
+        st.error("🛑 **請走人工通道**：出示音速號車票 + 補 ¥280 現金/刷 IC 卡。")
+        st.link_button("📍 導航：門司港站", "https://www.google.com/maps/dir/Kokura+Station,+%EF%BC%91%E4%B8%81%E7%9B%AE-%EF%BC%91-1+%E6%B5%85%E9%87%8E,+%E5%B0%8F%E5%80%89%E5%8C%97%E5%8C%BA+%E5%8C%97%E4%B9%9D%E5%B7%9E%E5%B8%82+%E7%A6%8F%E5%B2%A1%E7%9C%8C,+Japan/Mojiko+Station,+%EF%BC%91%E4%B8%81%E7%9B%AE-%EF%BC%95-31+%E8%A5%BF%E6%B5%B7%E5%B2%B8,+%E9%96%80%E5%8F%B8%E5%8C%BA+%E5%8C%97%E4%B9%9D%E5%B7%9E%E5%B8%82+%E7%A6%8F%E5%B2%A1%E7%9C%8C,+Japan/data=!4m14!4m13!1m5!1m1!19sChIJG1BJ-Uu_QzURbLAH89m7GGk!2m2!1d130.88257579999998!2d33.8869679!1m5!1m1!19sChIJm7Lk-SiWQzURomPcFPli5vg!2m2!1d130.9615522!2d33.945112099999996!3e3")
+        
+        st.markdown("##### 🐡 門司港行程", unsafe_allow_html=True)
+        st.write("燒咖哩、搭船去唐戶市場、香蕉人、Mooon 水果聖代。")
+        st.link_button("📍 導航：唐戶市場", "https://www.google.com/maps/search/?api=1&query=Karato+Market")
         st.link_button("📍 導航：Mooon de Retro", "https://www.google.com/maps/search/?api=1&query=Fruit+Factory+Mooon+de+Retro")
         
-        st.markdown("### 🍕 18:30 晚餐：LOPIA 超市")
+        st.markdown("##### <span class='time-badge'>16:50</span> 小倉站轉乘 (回程攻略)", unsafe_allow_html=True)
+        st.info("🔄 **標準動作：** 先刷 IC 卡 **出站** (付門司港車資)，再用音速號車票 **進站**。")
+        
+        st.markdown("##### <span class='time-badge'>17:06</span> 回程：音速號 Sonic 42", unsafe_allow_html=True)
         st.markdown("""
-        <div class="route-box">
-        <b>地點：</b> 博多站 <b>筑紫口</b> (Yodobashi 電器行 4F)。<br>
-        <b>攻略：</b> 買披薩、壽司、熟食、草莓。<br>
-        <b>回程：</b> 筑紫口排班處搭計程車回飯店開派對。
+        <div class="ticket-box">
+        <b>小倉 17:06 → 博多 17:49</b><br>
+        座位：<span class="highlight">2 號車 3AB, 4AB</span>
         </div>
         """, unsafe_allow_html=True)
+        
+        st.markdown("##### <span class='time-badge'>18:00</span> 博多站黃金採買動線", unsafe_allow_html=True)
+        st.markdown("""
+        <div class="shopping-box">
+        <b>1. 博多銘品藏 (博多口)：</b> 買 <b>努努雞</b> (冷炸雞)。<br>
+        <b>2. AMU PLAZA 1F：</b> 買 <b>AMANBERRY</b> (草莓夾心)。<br>
+        <b>3. LOPIA 超市 (筑紫口 Yodobashi 4F)：</b> 買熟食/披薩。
+        </div>
+        """, unsafe_allow_html=True)
+        st.link_button("📍 導航：博多銘品藏", "https://maps.app.goo.gl/2ZRq2nocpSEEV4LN6")
+        st.link_button("📍 導航：AMANBERRY", "https://maps.app.goo.gl/AYnit2B9CUzZJh859")
         st.link_button("📍 導航：LOPIA 博多", "https://www.google.com/maps/search/?api=1&query=LOPIA+Hakata+Yodobashi")
         
-        with st.expander("🛍️ 逛街備案"):
-            st.write("若想逛街，博多站樓上 AMU Plaza 6F 也有 **PLST**。")
+        st.markdown("##### <span class='time-badge'>19:30</span> 回飯店", unsafe_allow_html=True)
+        st.write("於筑紫口搭計程車回飯店開派對。")
 
     # --- Day 5 ---
     elif "Day 5" in day:
         st.header("Day 5: 熊本 & 鰻魚")
-        st.error("🚅 08:30 新幹線 (記得帶 IC 卡)")
         
-        st.markdown("### 🏯 上午：熊本移動")
+        st.markdown("##### <span class='time-badge'>08:00</span> 出發", unsafe_allow_html=True)
+        st.write("大行李放飯店，輕裝出發。")
+        
+        st.markdown("##### <span class='time-badge'>08:30</span> 去程：新幹線", unsafe_allow_html=True)
         st.markdown("""
-        <div class="route-box">
-        <b>1. 新幹線：</b> 博多(筑紫口改札) → <b>【熊本站】</b>。<br>
-        <b>2. 電車：</b> 白川口搭A系統 → <b>【水前寺公園】</b>。<br>
-        <b>3. 移動：</b> 電車回頭搭至 <b>【辛島町】</b> 吃午餐。
+        <div class="ticket-box">
+        <b>目標：</b> Mizuho/Sakura (約 08:30 發)<br>
+        <b>狀態：</b> 2/5 09:00 記得搶票 (指定席)<br>
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("### 🐷 11:20 午餐：勝烈亭豬排")
-        st.write("地點：新市街本店 (辛島町步行2分)")
+        st.markdown("##### 🏯 熊本行程", unsafe_allow_html=True)
+        st.write("上午：熊本城、城彩苑。")
+        st.markdown("##### <span class='time-badge'>11:30</span> 午餐：勝烈亭豬排", unsafe_allow_html=True)
         st.link_button("📍 導航：勝烈亭 新市街", "https://www.google.com/maps/search/?api=1&query=Katsuretsu+Tei+Shinshigai")
+        st.write("下午：下通商店街、鶴屋百貨 (熊本熊)。")
         
-        st.markdown("### 🍦 下午：熊本城")
-        st.write("搭接駁車上城彩苑/天守閣。")
-        st.write("甜點：**Tente 鮮果霜淇淋**、香梅庵陣太鼓。")
-        
-        st.markdown("### 🍱 18:50 晚餐：吉塚鰻魚屋")
+        st.markdown("##### <span class='time-badge'>17:42</span> 回程：新幹線", unsafe_allow_html=True)
         st.markdown("""
-        <div class="route-box">
-        <b>交通：</b> 18:23 回到博多站 → 走到博多口。<br>
-        <b>移動：</b> <b>搭計程車</b> 直達餐廳 (最舒服)。
+        <div class="ticket-box">
+        <b>目標：</b> Sakura 568 (17:42) 或 Mizuho 612 (17:53)<br>
+        <b>預計抵達博多：</b> 18:25 左右
         </div>
         """, unsafe_allow_html=True)
-        st.link_button("📍 導航：吉塚鰻魚屋 本店", "https://www.google.com/maps/search/?api=1&query=Yoshizuka+Unagiya")
         
-        with st.expander("🚨 晚餐備案 (若不想跑)"):
-            st.write("**Tanya 牛舌 (たんや)**：博多站一番街 B1。")
-            st.link_button("📍 導航：Tanya HAKATA", "https://www.google.com/maps/search/?api=1&query=Tanya+Hakata")
+        st.markdown("##### <span class='time-badge'>18:35</span> 移動", unsafe_allow_html=True)
+        st.write("博多口直接搭 **計程車** 前往餐廳。")
+        
+        st.markdown("##### <span class='time-badge'>18:50</span> 晚餐：吉塚鰻魚屋", unsafe_allow_html=True)
+        st.link_button("📍 導航：吉塚鰻魚屋 本店", "https://www.google.com/maps/search/?api=1&query=Yoshizuka+Unagiya")
 
     # --- Day 6 ---
     elif "Day 6" in day:
         st.header("Day 6: 甜點 & 返台")
         
-        st.markdown("### 🍩 09:30 I'm donut ?")
-        st.write("策略：飯店走過去 8 分鐘 (大丸百貨對面)。開店前排隊，買完就走。")
-        st.link_button("📍 導航：I'm donut ? 福岡店", "https://www.google.com/maps/search/?api=1&query=I'm+donut+Fukuoka")
+        st.markdown("##### <span class='time-badge'>08:50</span> 退房", unsafe_allow_html=True)
+        st.write("行李寄放櫃台。")
         
-        st.markdown("### ✈️ 10:15 前往機場")
-        st.info("🚕 **交通：** 路邊攔計程車 → **福岡機場國際線**。")
-        st.write("航班：BR105 (12:15 起飛)")
-        st.link_button("📍 導航：福岡機場國際線", "https://www.google.com/maps/search/?api=1&query=Fukuoka+Airport+International+Terminal")
+        st.markdown("##### <span class='time-badge'>09:10</span> 最後衝刺", unsafe_allow_html=True)
+        st.write("走路去排 **I'm donut ?** (天神店)。")
+        st.info("備案：買完可去對面 **大丸百貨** (10:00開) 上廁所/晃晃。")
+        st.link_button("📍 導航：I'm donut ?", "https://www.google.com/maps/search/?api=1&query=I'm+donut+Fukuoka")
+        st.link_button("📍 導航：大丸福岡天神", "https://maps.app.goo.gl/ozKorXfoFtVUXPB37")
+        
+        st.markdown("##### <span class='time-badge'>10:15</span> 前往機場", unsafe_allow_html=True)
+        st.warning("🚕 **交通：** 回飯店拿行李，請飯店叫車直奔「福岡機場國際線」。")
+        
+        st.markdown("##### <span class='time-badge'>10:45</span> 機場採買", unsafe_allow_html=True)
+        st.write("報到後逛免稅店 (福砂屋、明太子)。")
+        st.write("**航班：** BR105 (12:15 起飛)。")
 
 # === Tab 2: 購物清單 ===
 with tab2:
     st.header("🛍️ 採買檢核表")
     
+    st.subheader("📍 博多站 (Day 4 必買)")
+    st.checkbox("努努雞 (Ming/銘品藏) - 冷著吃！ 🍗")
+    st.checkbox("AMANBERRY 草莓夾心 (AMU 1F) 🍓")
+    st.checkbox("LOPIA 熟食/披薩 (筑紫口)")
+    
+    st.divider()
+    
     col1, col2 = st.columns(2)
     with col1:
         st.subheader("🏪 超市/超商")
-        st.checkbox("博多甘王草莓 🍓")
+        st.checkbox("博多甘王草莓")
         st.checkbox("大瓶水 (2L)")
         st.checkbox("優格/牛奶")
-        st.checkbox("布丁/泡芙")
-        
     with col2:
         st.subheader("🎁 伴手禮")
         st.checkbox("Full Full 明太子法棍")
         st.checkbox("福砂屋 長崎蛋糕")
-        st.checkbox("明太子軟管 (Fukuya)")
+        st.checkbox("明太子軟管")
         st.checkbox("博多通饅頭")
-        st.checkbox("I'm donut ? 甜甜圈")
+
+# === Tab 3: 車票與預約 ===
+with tab3:
+    st.header("🎫 票券管理中心")
+    
+    st.markdown("### ✅ Day 4: 音速號 (已購買)")
+    st.success("請截圖保存或列印")
+    st.markdown("""
+    <div class="ticket-box">
+    <b>去程 (Sonic 11):</b> 09:21 博多 → 10:10 小倉<br>
+    座位：<span class="highlight">3號車 3AB, 4AB</span><br>
+    <hr style="margin:5px 0; border-top: 1px dashed #1ABC9C;">
+    <b>回程 (Sonic 42):</b> 17:06 小倉 → 17:49 博多<br>
+    座位：<span class="highlight">2號車 3AB, 4AB</span>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("### ⚠️ Day 5: 新幹線 (明日搶票)")
+    st.warning("⏰ 鬧鐘：2/5 (四) 早上 09:00")
+    st.markdown("""
+    <div class="ticket-box">
+    <b>去程目標：</b> Mizuho/Sakura (約 08:30)<br>
+    <b>回程目標：</b> Sakura 568 (約 17:42)<br>
+    <b>備註：</b> 買指定席，確保舒適！
+    </div>
+    """, unsafe_allow_html=True)
     
     st.divider()
-    st.subheader("💊 藥妝 (天神大國/Cosmos)")
-    st.checkbox("合利他命")
-    st.checkbox("感冒藥 (Pubロン)")
-    st.checkbox("眼藥水 / 貼布")
-
-# === Tab 3: 票券與備忘 ===
-with tab3:
-    st.header("🎫 關鍵票券")
-    
-    st.info("💡 日本取票記得帶：**預約信用卡** + **護照**")
-    
-    st.markdown("### 🚄 台灣高鐵")
-    st.code("去程：3/1 12:00 (台中→桃園)", language="text")
-    st.code("回程：3/6 15:21 (桃園→台中)", language="text")
-    
-    st.markdown("### 🇯🇵 JR 九州")
-    st.code("音速號：3/4 09:21 (博多→小倉)", language="text")
-    st.code("新幹線：3/5 08:30 (博多→熊本)", language="text")
-    
     st.markdown("### 🍽️ 餐廳預約")
     st.success("藥院燒肉 肉一：3/2 19:00 (4人)")
-    st.caption("預約大名：鄭有浩 先生")
-
-# 頁尾
-st.divider()
-st.caption("Made with ❤️ for 2026 Family Trip")
-
+    st.caption("預約大名：鄭又豪 先生")
