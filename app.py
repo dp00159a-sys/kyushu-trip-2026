@@ -5,15 +5,16 @@ import os
 # 1. App 基礎設定
 # --------------------------
 st.set_page_config(
-    page_title="2026 北九州旅遊",
+    page_title="2026 北九州孝親行",
     page_icon="🎌",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
 
-# 自訂 CSS：優化視覺與操作感 (手機友善版)
+# 自訂 CSS：修正深色模式下的字體顏色問題
 st.markdown("""
     <style>
+    /* 強制按鈕文字顏色 */
     .stButton>button {
         width: 100%;
         border-radius: 12px;
@@ -21,18 +22,21 @@ st.markdown("""
         font-weight: bold;
         border: 1px solid #ddd;
         background-color: #ffffff;
-        color: #333333;
+        color: #333333 !important; /* 強制黑色字體 */
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         transition: all 0.3s;
     }
     .stButton>button:hover {
         border-color: #FF4B4B;
-        color: #FF4B4B;
+        color: #FF4B4B !important;
         background-color: #FFF0F0;
         transform: translateY(-2px);
     }
+    
+    /* 以下所有方框都加入 color: #333333 (深灰黑)，避免手機深色模式變白字 */
     .route-box {
         background-color: #F4F6F7;
+        color: #333333 !important; /* 修正點 */
         padding: 15px;
         border-radius: 10px;
         border-left: 5px solid #2980B9;
@@ -41,6 +45,7 @@ st.markdown("""
     }
     .ticket-box {
         background-color: #E8F8F5;
+        color: #333333 !important; /* 修正點 */
         padding: 15px;
         border-radius: 10px;
         border: 2px dashed #1ABC9C;
@@ -48,6 +53,7 @@ st.markdown("""
     }
     .shopping-box {
         background-color: #FEF9E7;
+        color: #333333 !important; /* 修正點 */
         padding: 15px;
         border-radius: 10px;
         border-left: 5px solid #F1C40F;
@@ -55,32 +61,39 @@ st.markdown("""
     }
     .bento-box {
         background-color: #FFF3E0;
+        color: #333333 !important; /* 修正點 */
         padding: 15px;
         border-radius: 10px;
         border-left: 5px solid #FF9800;
         margin-bottom: 10px;
     }
+    
+    /* 小標籤樣式 */
     .time-badge {
         background-color: #ECEFF1;
+        color: #455A64 !important; /* 強制深色字 */
         padding: 2px 6px;
         border-radius: 4px;
         font-weight: bold;
-        color: #455A64;
         margin-right: 5px;
     }
     .highlight {
         background-color: #FDEDEC;
+        color: #C0392B !important; /* 強制深紅字 */
         padding: 2px 5px;
         border-radius: 3px;
-        color: #C0392B;
         font-weight: bold;
     }
-    h1 { color: #C0392B; text-align: center; }
-    h2 { border-bottom: 2px solid #E74C3C; padding-bottom: 5px; margin-top: 30px;}
+    
+    /* 標題顏色修正 */
+    h1 { color: #C0392B !important; text-align: center; }
+    h2 { border-bottom: 2px solid #E74C3C; padding-bottom: 5px; margin-top: 30px; color: #E74C3C !important;}
+    h5 { color: #333333 !important; }
+    p, li { color: #333333; } /* 嘗試修正一般文字，但在 Streamlit 深色模式下可能被覆蓋，主要修復方框 */
     </style>
     """, unsafe_allow_html=True)
 
-st.title("🎌 2026 北九州6日遊")
+st.title("🎌 2026 北九州舒活孝親行")
 st.caption("Family Trip: 2026/3/1 (日) - 3/6 (五) | 全數票券確認 ✅")
 
 # --------------------------
@@ -356,9 +369,8 @@ with tab3:
     
     st.markdown("### ✅ Day 4: 音速號 (已購買)")
     st.success("博多 ↔ 小倉")
-    # 修改點：在 div 加入 style="color: #333333;" 強制字體為黑色
     st.markdown("""
-    <div class="ticket-box" style="color: #333333;">
+    <div class="ticket-box">
     <b>去程 (Sonic 11):</b> 09:21 → 10:10<br>
     座位：<span class="highlight">3號車 3AB, 4AB</span><br>
     <hr style="margin:5px 0; border-top: 1px dashed #1ABC9C;">
@@ -369,9 +381,8 @@ with tab3:
 
     st.markdown("### ✅ Day 5: 新幹線 (已購買)")
     st.success("博多 ↔ 熊本")
-    # 修改點：同樣加入 style="color: #333333;"
     st.markdown("""
-    <div class="ticket-box" style="color: #333333;">
+    <div class="ticket-box">
     <b>去程 (Mizuho 601):</b> 08:30 → 09:02<br>
     座位：<span class="highlight">5號車 5AB, 6AB</span><br>
     <hr style="margin:5px 0; border-top: 1px dashed #1ABC9C;">
@@ -384,6 +395,3 @@ with tab3:
     st.markdown("### 🍽️ 餐廳預約")
     st.success("藥院燒肉 肉一：3/2 19:00 (4人)")
     st.caption("預約大名：鄭又豪 先生")
-
-
-
