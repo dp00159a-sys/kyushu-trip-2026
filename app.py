@@ -11,7 +11,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 自訂 CSS：優化視覺與操作感
+# 自訂 CSS：優化視覺與操作感 (手機友善版)
 st.markdown("""
     <style>
     .stButton>button {
@@ -51,6 +51,13 @@ st.markdown("""
         padding: 15px;
         border-radius: 10px;
         border-left: 5px solid #F1C40F;
+        margin-bottom: 10px;
+    }
+    .bento-box {
+        background-color: #FFF3E0;
+        padding: 15px;
+        border-radius: 10px;
+        border-left: 5px solid #FF9800;
         margin-bottom: 10px;
     }
     .time-badge {
@@ -250,15 +257,21 @@ with tab1:
     elif "Day 5" in day:
         st.header("Day 5: 熊本 & 鰻魚")
         
-        st.markdown("##### <span class='time-badge'>08:00</span> 出發", unsafe_allow_html=True)
-        st.write("大行李放飯店，輕裝出發。")
+        st.markdown("##### <span class='time-badge'>08:00</span> 出發 & 買便當", unsafe_allow_html=True)
+        st.markdown("""
+        <div class="bento-box">
+        <b>🍱 早餐任務：駅弁当 (Ekiben Station)</b><br>
+        地點：博多站筑紫口 (改札口旁)。<br>
+        建議：08:10 前買好，進站候車。
+        </div>
+        """, unsafe_allow_html=True)
         
         st.markdown("##### <span class='time-badge'>08:30</span> 去程：新幹線 Mizuho 601", unsafe_allow_html=True)
         st.markdown("""
         <div class="ticket-box">
         <b>博多 08:30 → 熊本 09:02</b><br>
         座位：<span class="highlight">5 號車 5AB, 6AB</span><br>
-        備註：記得帶實體信用卡取票！
+        備註：在車上享用便當！
         </div>
         """, unsafe_allow_html=True)
         
@@ -267,6 +280,15 @@ with tab1:
         st.markdown("##### <span class='time-badge'>11:30</span> 午餐：勝烈亭豬排", unsafe_allow_html=True)
         st.link_button("📍 導航：勝烈亭 新市街", "https://www.google.com/maps/search/?api=1&query=Katsuretsu+Tei+Shinshigai")
         st.write("下午：下通商店街、鶴屋百貨 (熊本熊)。")
+        
+        st.markdown("##### <span class='time-badge'>17:10</span> 熊本車站採買", unsafe_allow_html=True)
+        st.markdown("""
+        <div class="bento-box">
+        <b>🐻 必逛：肥後よかモン市場</b><br>
+        地點：新幹線改札口正對面。<br>
+        目標：熊本熊圓形便當 (收藏用)、阿蘇赤牛便當 (宵夜)。
+        </div>
+        """, unsafe_allow_html=True)
         
         st.markdown("##### <span class='time-badge'>17:20</span> 回程：新幹線 Tsubame 328", unsafe_allow_html=True)
         st.markdown("""
@@ -326,6 +348,7 @@ with tab2:
         st.checkbox("福砂屋 長崎蛋糕")
         st.checkbox("明太子軟管")
         st.checkbox("博多通饅頭")
+        st.checkbox("熊本熊便當 (空盒)")
 
 # === Tab 3: 車票與預約 ===
 with tab3:
