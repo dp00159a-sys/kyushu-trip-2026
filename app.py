@@ -11,10 +11,9 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 自訂 CSS：修正深色模式下的字體顏色問題
+# 自訂 CSS：優化視覺與操作感 (手機友善版)
 st.markdown("""
     <style>
-    /* 強制按鈕文字顏色 */
     .stButton>button {
         width: 100%;
         border-radius: 12px;
@@ -22,21 +21,18 @@ st.markdown("""
         font-weight: bold;
         border: 1px solid #ddd;
         background-color: #ffffff;
-        color: #333333 !important; /* 強制黑色字體 */
+        color: #333333;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         transition: all 0.3s;
     }
     .stButton>button:hover {
         border-color: #FF4B4B;
-        color: #FF4B4B !important;
+        color: #FF4B4B;
         background-color: #FFF0F0;
         transform: translateY(-2px);
     }
-    
-    /* 以下所有方框都加入 color: #333333 (深灰黑)，避免手機深色模式變白字 */
     .route-box {
         background-color: #F4F6F7;
-        color: #333333 !important; /* 修正點 */
         padding: 15px;
         border-radius: 10px;
         border-left: 5px solid #2980B9;
@@ -45,7 +41,6 @@ st.markdown("""
     }
     .ticket-box {
         background-color: #E8F8F5;
-        color: #333333 !important; /* 修正點 */
         padding: 15px;
         border-radius: 10px;
         border: 2px dashed #1ABC9C;
@@ -53,7 +48,6 @@ st.markdown("""
     }
     .shopping-box {
         background-color: #FEF9E7;
-        color: #333333 !important; /* 修正點 */
         padding: 15px;
         border-radius: 10px;
         border-left: 5px solid #F1C40F;
@@ -61,35 +55,28 @@ st.markdown("""
     }
     .bento-box {
         background-color: #FFF3E0;
-        color: #333333 !important; /* 修正點 */
         padding: 15px;
         border-radius: 10px;
         border-left: 5px solid #FF9800;
         margin-bottom: 10px;
     }
-    
-    /* 小標籤樣式 */
     .time-badge {
         background-color: #ECEFF1;
-        color: #455A64 !important; /* 強制深色字 */
         padding: 2px 6px;
         border-radius: 4px;
         font-weight: bold;
+        color: #455A64;
         margin-right: 5px;
     }
     .highlight {
         background-color: #FDEDEC;
-        color: #C0392B !important; /* 強制深紅字 */
         padding: 2px 5px;
         border-radius: 3px;
+        color: #C0392B;
         font-weight: bold;
     }
-    
-    /* 標題顏色修正 */
-    h1 { color: #C0392B !important; text-align: center; }
-    h2 { border-bottom: 2px solid #E74C3C; padding-bottom: 5px; margin-top: 30px; color: #E74C3C !important;}
-    h5 { color: #333333 !important; }
-    p, li { color: #333333; } /* 嘗試修正一般文字，但在 Streamlit 深色模式下可能被覆蓋，主要修復方框 */
+    h1 { color: #C0392B; text-align: center; }
+    h2 { border-bottom: 2px solid #E74C3C; padding-bottom: 5px; margin-top: 30px;}
     </style>
     """, unsafe_allow_html=True)
 
