@@ -74,7 +74,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 st.title("🎌 2026 北九州舒活孝親行")
-st.caption("Family Trip: 2026/3/1 (日) - 3/6 (五) | 不趕路、精確轉乘、美食優先")
+st.caption("Family Trip: 2026/3/1 (日) - 3/6 (五) | 全數票券確認 ✅")
 
 # --------------------------
 # 2. 核心分頁
@@ -204,7 +204,7 @@ with tab1:
         """, unsafe_allow_html=True)
         
         st.markdown("##### <span class='time-badge'>10:10</span> 小倉站轉乘 (免出站)", unsafe_allow_html=True)
-        # 顯示使用者上傳的圖片
+        # 顯示使用者上傳的圖片 (請確認檔名為 kokura_transfer.jpg)
         if os.path.exists("kokura_transfer.jpg"):
             st.image("kokura_transfer.jpg", caption="💡 攻略：下車後直接走到對面或隔壁月台 (7轉8)", use_column_width=True)
         else:
@@ -253,11 +253,12 @@ with tab1:
         st.markdown("##### <span class='time-badge'>08:00</span> 出發", unsafe_allow_html=True)
         st.write("大行李放飯店，輕裝出發。")
         
-        st.markdown("##### <span class='time-badge'>08:30</span> 去程：新幹線", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>08:30</span> 去程：新幹線 Mizuho 601", unsafe_allow_html=True)
         st.markdown("""
         <div class="ticket-box">
-        <b>目標：</b> Mizuho/Sakura (約 08:30 發)<br>
-        <b>狀態：</b> 2/5 09:00 記得搶票 (指定席)<br>
+        <b>博多 08:30 → 熊本 09:02</b><br>
+        座位：<span class="highlight">5 號車 5AB, 6AB</span><br>
+        備註：記得帶實體信用卡取票！
         </div>
         """, unsafe_allow_html=True)
         
@@ -267,11 +268,12 @@ with tab1:
         st.link_button("📍 導航：勝烈亭 新市街", "https://www.google.com/maps/search/?api=1&query=Katsuretsu+Tei+Shinshigai")
         st.write("下午：下通商店街、鶴屋百貨 (熊本熊)。")
         
-        st.markdown("##### <span class='time-badge'>17:42</span> 回程：新幹線", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>17:20</span> 回程：新幹線 Tsubame 328", unsafe_allow_html=True)
         st.markdown("""
         <div class="ticket-box">
-        <b>目標：</b> Sakura 568 (17:42) 或 Mizuho 612 (17:53)<br>
-        <b>預計抵達博多：</b> 18:25 左右
+        <b>熊本 17:20 → 博多 18:09</b><br>
+        座位：<span class="highlight">5 號車 6AB, 7AB</span><br>
+        備註：提早回博多，從容吃晚餐！
         </div>
         """, unsafe_allow_html=True)
         
@@ -327,27 +329,29 @@ with tab2:
 
 # === Tab 3: 車票與預約 ===
 with tab3:
-    st.header("🎫 票券管理中心")
+    st.header("🎫 票券管理中心 (已全數確認)")
     
     st.markdown("### ✅ Day 4: 音速號 (已購買)")
-    st.success("請截圖保存或列印")
+    st.success("博多 ↔ 小倉")
     st.markdown("""
     <div class="ticket-box">
-    <b>去程 (Sonic 11):</b> 09:21 博多 → 10:10 小倉<br>
+    <b>去程 (Sonic 11):</b> 09:21 → 10:10<br>
     座位：<span class="highlight">3號車 3AB, 4AB</span><br>
     <hr style="margin:5px 0; border-top: 1px dashed #1ABC9C;">
-    <b>回程 (Sonic 42):</b> 17:06 小倉 → 17:49 博多<br>
+    <b>回程 (Sonic 42):</b> 17:06 → 17:49<br>
     座位：<span class="highlight">2號車 3AB, 4AB</span>
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("### ⚠️ Day 5: 新幹線 (明日搶票)")
-    st.warning("⏰ 鬧鐘：2/5 (四) 早上 09:00")
+    st.markdown("### ✅ Day 5: 新幹線 (已購買)")
+    st.success("博多 ↔ 熊本")
     st.markdown("""
     <div class="ticket-box">
-    <b>去程目標：</b> Mizuho/Sakura (約 08:30)<br>
-    <b>回程目標：</b> Sakura 568 (約 17:42)<br>
-    <b>備註：</b> 買指定席，確保舒適！
+    <b>去程 (Mizuho 601):</b> 08:30 → 09:02<br>
+    座位：<span class="highlight">5號車 5AB, 6AB</span><br>
+    <hr style="margin:5px 0; border-top: 1px dashed #1ABC9C;">
+    <b>回程 (Tsubame 328):</b> 17:20 → 18:09<br>
+    座位：<span class="highlight">5號車 6AB, 7AB</span>
     </div>
     """, unsafe_allow_html=True)
     
