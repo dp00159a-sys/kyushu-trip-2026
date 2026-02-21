@@ -745,7 +745,7 @@ with tab4:
     
     with st.form("expense_form"):
         col_day, col_payer = st.columns(2)
-        exp_day = col_day.selectbox("🗓️ 日期", ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6"])
+        exp_day = col_day.selectbox("🗓️ 日期", ["行前開銷","Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6"])
         exp_payer = col_payer.selectbox("👤 誰的開銷 / 歸屬", ["All (全家平分)", "爸爸", "媽媽", "姊姊", "弟弟"])
         
         exp_name = st.text_input("📝 項目名稱 (例如：便利商店買水、松本清藥妝)")
@@ -796,3 +796,4 @@ with tab4:
         if st.button("🗑️ 清空所有當地記帳紀錄"):
             st.session_state.expenses = []
             st.rerun()
+
