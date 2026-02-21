@@ -1,6 +1,8 @@
 import streamlit as st
 import os
 import pandas as pd
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 # --------------------------
 # 1. App 基礎設定
@@ -91,10 +93,6 @@ st.markdown("""
 st.title("🎌 2026 北九州行")
 st.caption("Family Trip: 2026/3/1 (日) - 3/6 (五) | 全數票券與詳細動線已鎖定 ✅")
 
-# 初始化 session_state 記帳本
-if 'expenses' not in st.session_state:
-    st.session_state.expenses = []
-
 # --------------------------
 # 2. 核心分頁
 # --------------------------
@@ -119,7 +117,8 @@ with tab1:
             st.image("出國前最終確認：Day 1 (週日).jpg", use_column_width=True)
             
         st.info("""
-        💡 **出發前溫馨提醒 (領隊廣播)：** 請務必提醒家人要帶上「日本的交通卡」(Suica、ICOCA 等)。雖然現場買實體票也可以，但帶著長輩拉行李，能直接「嗶」卡進出站，絕對會讓旅程一開始就順暢無比！
+        💡 **出發前溫馨提醒 (領隊廣播)：**
+        請務必提醒家人要帶上「日本的交通卡」(Suica、ICOCA 等)。雖然現場買實體票也可以，但帶著長輩拉行李，能直接「嗶」卡進出站，絕對會讓旅程一開始就順暢無比！
         """)
         
         st.markdown("##### <span class='time-badge'>12:00</span> 【台灣出發】前往機場", unsafe_allow_html=True)
@@ -295,7 +294,10 @@ with tab1:
         💡 **領隊早餐雷達 (備用)：**
         如果長輩這天起得特別早，可以搭計程車直接殺去博多站 B1 的 **「たんやHAKATA」** 吃超划算的牛舌明太子當早餐！吃完剛好搭 08:30 的車。（若想多睡一點，就維持原案吃超商麵包）。
         """)
-        st.warning("🚕 **首選交通 (計程車)：** 絕對不要讓長輩走 20 分鐘去博多站！早上走這一段到水族館就累了。請直接在飯店叫車直達博多站博多口 (約 ¥1000 左右，完全不用走路)。<br>🚌 **備案交通 (西鐵巴士)：** 走到飯店外大馬路上的「柳橋」公車站牌，搭乘前往博多站的西鐵巴士。")
+        st.markdown("""
+        🚕 **首選交通 (計程車)：** 絕對不要讓長輩走 20 分鐘去博多站！早上走這一段到水族館就累了。請直接在飯店叫車直達博多站博多口 (約 ¥1000 左右，完全不用走路)。
+        🚌 **備案交通 (西鐵巴士)：** 走到飯店外大馬路上的「柳橋」公車站牌，搭乘前往博多站的西鐵巴士。
+        """)
         st.link_button("🗺️ 路線：住宿地 ➡ 海洋世界海之中道", "https://maps.app.goo.gl/VLqBvFM5QqudXBye7")
         
         st.markdown("##### <span class='time-badge'>08:25</span> 【前往海之中道】JR 轉乘", unsafe_allow_html=True)
@@ -713,7 +715,7 @@ with tab3:
 
 # === Tab 4: 旅費與記帳 ===
 with tab4:
-    st.header("💰 旅費與結算系統")
+    st.header("💰 旅費與結算系統 (Google Sheets 雲端連動版)")
     
     # --- 上半部：固定開銷 ---
     st.subheader("🏦 行前總預算與固定開銷 (已確定金額)")
@@ -743,57 +745,75 @@ with tab4:
     st.subheader("💴 旅途當地記帳本")
     rate = st.number_input("🔄 今日日幣換台幣匯率 (可隨時調整)", value=0.215, format="%.4f")
     
-    with st.form("expense_form"):
-        col_day, col_payer = st.columns(2)
-        exp_day = col_day.selectbox("🗓️ 日期", ["行前開銷","Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6"])
-        exp_payer = col_payer.selectbox("👤 誰的開銷 / 歸屬", ["All (全家平分)", "爸爸", "媽媽", "姊姊", "弟弟"])
+    # Google Sheets 雙刀流連線機制
+    try:
+        scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+        try:
+            # 模式 A：嘗試讀取 Streamlit Secrets 保險箱 (雲端上線時會走到這裡)
+            creds_dict = dict(st.secrets["gcp_service_account"])
+            creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
+        except Exception:
+            # 模式 B：讀取本地檔案 (在您自己電腦測試時會走到這裡)
+            creds = ServiceAccountCredentials.from_json_keyfile_name('service_account.json', scope)
         
-        exp_name = st.text_input("📝 項目名稱 (例如：便利商店買水、松本清藥妝)")
-        exp_amount = st.number_input("💴 金額 (日圓 ¥)", min_value=0, step=100)
+        client = gspread.authorize(creds)
+        sheet = client.open('2026北九州行_旅費記帳').sheet1
         
-        submitted = st.form_submit_button("新增這筆花費 ➕")
-        if submitted and exp_name and exp_amount > 0:
-            st.session_state.expenses.append({
-                "日期": exp_day,
-                "歸屬": exp_payer,
-                "項目": exp_name,
-                "日圓 (¥)": exp_amount,
-                "台幣 (NT$)": int(exp_amount * rate)
-            })
-            st.success(f"✅ 已成功記錄：{exp_name} (¥{exp_amount})")
+        # 讀取現有的記帳資料
+        records = sheet.get_all_records()
+        df = pd.DataFrame(records)
+        
+        with st.form("expense_form"):
+            col_day, col_payer = st.columns(2)
+            exp_day = col_day.selectbox("🗓️ 日期", ["行前開銷", "Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6"])
+            exp_payer = col_payer.selectbox("👤 誰的開銷 / 歸屬", ["All (全家平分)", "爸爸", "媽媽", "姊姊", "弟弟"])
             
-    # --- 顯示記帳明細與結算 ---
-    if st.session_state.expenses:
-        st.markdown("### 📜 旅途花費明細表")
-        df = pd.DataFrame(st.session_state.expenses)
-        st.dataframe(df, use_container_width=True)
-        
-        # 結算邏輯
-        st.markdown("### 📊 最終個人結算報表 (台幣)")
-        
-        # 1. 算出當地「All」的總公費，並除以 4
-        shared_twd = df[df['歸屬'] == 'All (全家平分)']['台幣 (NT$)'].sum()
-        shared_per_person = shared_twd / 4
-        
-        # 2. 分別計算 4 個人的最終總額
-        persons = ["爸爸", "媽媽", "姊姊", "弟弟"]
-        settlement_data = []
-        
-        for p in persons:
-            personal_twd = df[df['歸屬'] == p]['台幣 (NT$)'].sum()
-            total_for_p = fixed_per_person + shared_per_person + personal_twd
-            settlement_data.append({
-                "家人": p,
-                "行前公費底銷": f"{fixed_per_person:,.0f}",
-                "當地平分公費": f"{shared_per_person:,.0f}",
-                "個人專屬花費": f"{personal_twd:,.0f}",
-                "🔥 應付總額": f"{total_for_p:,.0f}"
-            })
+            exp_name = st.text_input("📝 項目名稱 (例如：便利商店買水、松本清藥妝)")
+            exp_amount = st.number_input("💴 金額 (日圓 ¥ / 台幣請先將匯率改1)", min_value=0, step=100)
             
-        df_settlement = pd.DataFrame(settlement_data)
-        st.table(df_settlement)
-        
-        if st.button("🗑️ 清空所有當地記帳紀錄"):
-            st.session_state.expenses = []
-            st.rerun()
+            submitted = st.form_submit_button("新增這筆花費 ➕")
+            if submitted and exp_name and exp_amount > 0:
+                ntd_amount = int(exp_amount * rate)
+                # 直接寫入 Google Sheets
+                sheet.append_row([exp_day, exp_payer, exp_name, exp_amount, ntd_amount])
+                st.success(f"✅ 已成功記錄並同步至雲端：{exp_name} (¥{exp_amount} / NT${ntd_amount})")
+                st.rerun()
 
+        # --- 顯示記帳明細與結算 ---
+        if not df.empty:
+            st.markdown("### 📜 旅途花費明細表 (同步自 Google Sheets)")
+            st.dataframe(df, use_container_width=True)
+            
+            # 結算邏輯
+            st.markdown("### 📊 最終個人結算報表 (台幣)")
+            
+            # 確保台幣欄位格式正確
+            if '歸屬' in df.columns and '台幣 (NT$)' in df.columns:
+                df['台幣 (NT$)'] = pd.to_numeric(df['台幣 (NT$)'], errors='coerce').fillna(0)
+                
+                # 1. 算出當地「All」的總公費，並除以 4
+                shared_twd = df[df['歸屬'] == 'All (全家平分)']['台幣 (NT$)'].sum()
+                shared_per_person = shared_twd / 4
+                
+                # 2. 分別計算 4 個人的最終總額
+                persons = ["爸爸", "媽媽", "姊姊", "弟弟"]
+                settlement_data = []
+                
+                for p in persons:
+                    personal_twd = df[df['歸屬'] == p]['台幣 (NT$)'].sum()
+                    total_for_p = fixed_per_person + shared_per_person + personal_twd
+                    settlement_data.append({
+                        "家人": p,
+                        "行前公費底銷": f"{fixed_per_person:,.0f}",
+                        "當地平分公費": f"{shared_per_person:,.0f}",
+                        "個人專屬花費": f"{personal_twd:,.0f}",
+                        "🔥 應付總額": f"{total_for_p:,.0f}"
+                    })
+                    
+                df_settlement = pd.DataFrame(settlement_data)
+                st.table(df_settlement)
+
+    except Exception as e:
+        st.error("⚠️ 無法連線至 Google Sheets。請確認金鑰設定是否正確，或是試算表是否已開啟共用。")
+        st.caption("開發人員錯誤訊息檢視：")
+        st.code(str(e))
