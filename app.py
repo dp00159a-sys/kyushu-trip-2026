@@ -5,7 +5,7 @@ import os
 # 1. App 基礎設定
 # --------------------------
 st.set_page_config(
-    page_title="2026 北九州孝親行",
+    page_title="2026 北九州行",
     page_icon="🎌",
     layout="centered",
     initial_sidebar_state="collapsed"
@@ -80,7 +80,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("🎌 2026 北九州舒活孝親行")
+st.title("🎌 2026 北九州行")
 st.caption("Family Trip: 2026/3/1 (日) - 3/6 (五) | 全數票券與詳細動線已鎖定 ✅")
 
 # --------------------------
@@ -434,3 +434,4 @@ with tab3:
     st.markdown("### 🍽️ 餐廳預約")
     st.success("藥院燒肉 肉一：3/2 19:00 (4人)")
     st.caption("預約大名：鄭又豪 先生")
+
