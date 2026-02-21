@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import pandas as pd
 
 # --------------------------
 # 1. App 基礎設定
@@ -77,16 +78,27 @@ st.markdown("""
     }
     h1 { color: #C0392B; text-align: center; }
     h2 { border-bottom: 2px solid #E74C3C; padding-bottom: 5px; margin-top: 30px;}
+    .account-box {
+        background-color: #F9EBEA;
+        padding: 15px;
+        border-radius: 10px;
+        border-left: 5px solid #C0392B;
+        margin-bottom: 10px;
+    }
     </style>
     """, unsafe_allow_html=True)
 
 st.title("🎌 2026 北九州行")
 st.caption("Family Trip: 2026/3/1 (日) - 3/6 (五) | 全數票券與詳細動線已鎖定 ✅")
 
+# 初始化 session_state 記帳本
+if 'expenses' not in st.session_state:
+    st.session_state.expenses = []
+
 # --------------------------
 # 2. 核心分頁
 # --------------------------
-tab1, tab2, tab3 = st.tabs(["📅 詳細行程", "🛍️ 購物清單", "🎫 車票與預約"])
+tab1, tab2, tab3, tab4 = st.tabs(["📅 詳細行程", "🛍️ 購物清單", "🎫 車票與預約", "💰 旅費與記帳"])
 
 # === Tab 1: 每日行程 ===
 with tab1:
@@ -698,3 +710,89 @@ with tab3:
     st.markdown("### 🍽️ 餐廳預約")
     st.success("藥院燒肉 肉一：3/2 19:00 (4人)")
     st.caption("預約大名：鄭又豪 先生")
+
+# === Tab 4: 旅費與記帳 ===
+with tab4:
+    st.header("💰 旅費與結算系統")
+    
+    # --- 上半部：固定開銷 ---
+    st.subheader("🏦 行前總預算與固定開銷 (已確定金額)")
+    
+    fixed_total_twd = 107234
+    fixed_per_person = fixed_total_twd / 4
+    
+    st.markdown(f"""
+    <div class="account-box">
+    <b>🧾 固定花費明細 (單位：台幣)：</b><br>
+    <ul>
+        <li>台灣高鐵來回：3,780 元</li>
+        <li>長榮來回機票 (4人)：65,828 元</li>
+        <li>Cross Life 飯店 (5晚)：27,080 元</li>
+        <li>海洋世界門票：2,060 元</li>
+        <li>音速號車票：4,298 元</li>
+        <li>新幹線車票：9,188 元</li>
+    </ul>
+    <b>💰 行前總花費：{fixed_total_twd:,} 元</b><br>
+    <span style="color:#C0392B;"><b>👨‍👩‍👧‍👦 平均每人已分擔：{fixed_per_person:,.0f} 元</b></span>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.divider()
+    
+    # --- 下半部：當地記帳本 ---
+    st.subheader("💴 旅途當地記帳本")
+    rate = st.number_input("🔄 今日日幣換台幣匯率 (可隨時調整)", value=0.215, format="%.4f")
+    
+    with st.form("expense_form"):
+        col_day, col_payer = st.columns(2)
+        exp_day = col_day.selectbox("🗓️ 日期", ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6"])
+        exp_payer = col_payer.selectbox("👤 誰的開銷 / 歸屬", ["All (全家平分)", "爸爸", "媽媽", "姊姊", "弟弟"])
+        
+        exp_name = st.text_input("📝 項目名稱 (例如：便利商店買水、松本清藥妝)")
+        exp_amount = st.number_input("💴 金額 (日圓 ¥)", min_value=0, step=100)
+        
+        submitted = st.form_submit_button("新增這筆花費 ➕")
+        if submitted and exp_name and exp_amount > 0:
+            st.session_state.expenses.append({
+                "日期": exp_day,
+                "歸屬": exp_payer,
+                "項目": exp_name,
+                "日圓 (¥)": exp_amount,
+                "台幣 (NT$)": int(exp_amount * rate)
+            })
+            st.success(f"✅ 已成功記錄：{exp_name} (¥{exp_amount})")
+            
+    # --- 顯示記帳明細與結算 ---
+    if st.session_state.expenses:
+        st.markdown("### 📜 旅途花費明細表")
+        df = pd.DataFrame(st.session_state.expenses)
+        st.dataframe(df, use_container_width=True)
+        
+        # 結算邏輯
+        st.markdown("### 📊 最終個人結算報表 (台幣)")
+        
+        # 1. 算出當地「All」的總公費，並除以 4
+        shared_twd = df[df['歸屬'] == 'All (全家平分)']['台幣 (NT$)'].sum()
+        shared_per_person = shared_twd / 4
+        
+        # 2. 分別計算 4 個人的最終總額
+        persons = ["爸爸", "媽媽", "姊姊", "弟弟"]
+        settlement_data = []
+        
+        for p in persons:
+            personal_twd = df[df['歸屬'] == p]['台幣 (NT$)'].sum()
+            total_for_p = fixed_per_person + shared_per_person + personal_twd
+            settlement_data.append({
+                "家人": p,
+                "行前公費底銷": f"{fixed_per_person:,.0f}",
+                "當地平分公費": f"{shared_per_person:,.0f}",
+                "個人專屬花費": f"{personal_twd:,.0f}",
+                "🔥 應付總額": f"{total_for_p:,.0f}"
+            })
+            
+        df_settlement = pd.DataFrame(settlement_data)
+        st.table(df_settlement)
+        
+        if st.button("🗑️ 清空所有當地記帳紀錄"):
+            st.session_state.expenses = []
+            st.rerun()
