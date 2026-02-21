@@ -5,7 +5,7 @@ import os
 # 1. App 基礎設定
 # --------------------------
 st.set_page_config(
-    page_title="2026 北九州行",
+    page_title="2026 九州行",
     page_icon="🎌",
     layout="centered",
     initial_sidebar_state="collapsed"
@@ -80,7 +80,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("🎌 2026 北九州行")
+st.title("🎌 2026 九州行")
 st.caption("Family Trip: 2026/3/1 (日) - 3/6 (五) | 全數票券與詳細動線已鎖定 ✅")
 
 # --------------------------
@@ -121,6 +121,7 @@ with tab1:
         3. <b>搭乘接駁巴士 (車程約 10 分鐘)</b>，巴士會直接載您抵達國內線航廈的「福岡機場地鐵站」入口。
         </div>
         """, unsafe_allow_html=True)
+        
         st.caption("🎥 實景走法請參考以下影片（從下飛機到搭巴士）：")
         st.video("https://www.youtube.com/watch?v=pRwDSFJskzQ")
         
@@ -154,7 +155,7 @@ with tab1:
     # --- Day 2 ---
     elif "Day 2" in day:
         st.header("Day 2: 太宰府賞梅 & 天神購物")
-        st.caption("今日核心目標： 早上看限定版神殿與梅花，下午逛街，晚上吃和牛燒肉！")
+        st.caption("今日核心目標：早上看限定版神殿與梅花，下午逛街，晚上吃和牛燒肉！")
         if os.path.exists("出國前最終確認：Day 2 (週一).jpg"):
             st.image("出國前最終確認：Day 2 (週一).jpg", use_column_width=True)
             
@@ -189,6 +190,12 @@ with tab1:
         2. <b>一般急行 (備案)：</b> 如果沒遇到直達車，就搭往「大牟田」方向的特急/急行，在 <b>【西鐵二日市站】</b> 下車，同月台或換月台轉搭「太宰府線」。
         </div>
         """, unsafe_allow_html=True)
+
+        st.markdown("##### 🎥 交通與行程參考影片", unsafe_allow_html=True)
+        st.markdown("""
+        * 🌟 主要推薦：[福岡&太宰府美食之旅｜⛩️太宰府天滿宮交通攻略](https://www.youtube.com/watch?v=0jVJzLYuCuk)
+        * 次要推薦：[到福岡觀光必去景點太宰府天滿宮 參拜與美食散步](https://www.youtube.com/watch?v=UnXoxvTQzvo)
+        """)
         
         st.markdown("##### <span class='time-badge'>10:45</span> 【太宰府散策】賞梅與吃餅", unsafe_allow_html=True)
         st.markdown("""
@@ -248,6 +255,9 @@ with tab1:
         搭乘 08:50~09:00 左右往「西戶崎」的列車 → <b>【海之中道站】</b> (車程約 20 分鐘)。出站後跟著人群走，水族館就在旁邊。
         </div>
         """, unsafe_allow_html=True)
+        
+        st.caption("🎥 海之中道搭車實景走法參考影片：")
+        st.video("https://www.youtube.com/watch?v=G5a76LMrDPI")
         
         st.markdown("##### <span class='time-badge'>09:30</span> 【水族館】福岡海洋世界 Marine World", unsafe_allow_html=True)
         st.success("🎫 門票預約：09:30 預約場次 (4 位成人)。準備好手機憑證直接掃碼入場。")
@@ -311,6 +321,14 @@ with tab1:
         st.write("**1. 出站：** 下車後搭手扶梯上樓，走到出站閘門。把您手上的**「音速號車票」放入機器**，機器收走車票出站。")
         st.write("**2. 進站：** 在閘門外轉個身，立刻拿出**「實體交通卡 (Suica/ICOCA)」**，嗶卡重新進站！")
         st.write("**3. 換月台：** 進站後尋找**「鹿兒島本線 (往門司港)」**指標（通常 8 號月台），搭乘普通/快速列車 (約 10-15 分鐘一班)。")
+
+        with st.expander("📚 門司港交通與行程攻略包 (點擊展開)"):
+            st.markdown("""
+            * 🌟 **圖文轉乘詳解：** [Dcard 北九州交通分享](https://www.dcard.tw/f/japan_travel/p/259610237)
+            * 🎥 **行程與交通參考 1：** [福岡前往北九州交通＋動線安排完整攻略](https://www.youtube.com/watch?v=OGWe5jL9Lq4)
+            * 🎥 **行程與交通參考 2：** [小倉門司港美食景點交通一次看](https://www.youtube.com/watch?v=2GU-jQCnJ-4&t=227s)
+            * 🎥 **行程與交通參考 3：** [北九州門司港一日遊！景點/美食/交通攻略](https://www.youtube.com/watch?v=2AypnBipqeI)
+            """)
         
         st.markdown("##### <span class='time-badge'>10:45</span> 【抵達門司港】大正浪漫之旅起點", unsafe_allow_html=True)
         st.write("**出站：** 直接用交通卡「嗶」出站（自動扣款約 280 日圓），完全免講話。")
@@ -389,7 +407,7 @@ with tab1:
         st.markdown("""
         <div class="bento-box">
         <b>地點：</b> 博多站 1F 筑紫口側，就在新幹線改札口附近。<br>
-        <b>動作：</b> 帶長輩來這裡挑選自己喜歡的鐵路便當 (明太子便當、佐賀牛便當等)。結帳後，直接刷票進新幹線閘門。
+        <b>動作：</b> 帶長輩來這裡挑選自己喜歡的鐵路便當 (明太子便當、佐賀牛便當等)。結ষ্ঠ結帳後，直接刷票進新幹線閘門。
         </div>
         """, unsafe_allow_html=True)
         st.link_button("📍 導航：駅弁当 筑紫口店", "https://www.google.com/maps/search/?api=1&query=駅弁当+博多駅")
@@ -403,11 +421,17 @@ with tab1:
         備註：乘車體驗！上車就可以打開便當一邊看風景一邊吃。瑞穗號速度極快，<b>只要 32 分鐘</b>就會抵達熊本！
         </div>
         """, unsafe_allow_html=True)
+        st.markdown("🎥 參考 VLOG：[熊本市區一日遊｜福岡機場到博多、熊本交通方式](https://www.youtube.com/watch?v=IucP8Lrs43E&t=273s)")
         
         st.markdown("##### <span class='time-badge'>09:15</span> 【市區移動】搭乘熊本市電", unsafe_allow_html=True)
         st.write("**動線：** 出熊本車站後，走到站前的「市電乘車處」。")
         st.write("**搭車：** 搭乘 **A 系統（紅線，往健軍町方向）**。在 **【熊本城・市役所前】** 站下車。")
         st.link_button("🗺️ 路線：市電 A 系統 ➡ 通町筋(熊本城)", "https://maps.app.goo.gl/WhczLrp8QfC5yJLk7")
+        with st.expander("🚃 熊本市電交通攻略與知識庫 (點擊展開)"):
+            st.markdown("""
+            * 🎥 **市電搭乘教學影片：** [最新！熊本市區千萬要知道的所有交通細節](https://www.youtube.com/watch?v=Lkgorc2QWOs)
+            * 📝 **備用知識庫：** [熊本市電一日券與24小時券介紹](https://nicklee.tw/3297/kumamoto-tram-1day/)
+            """)
         
         st.markdown("##### <span class='time-badge'>09:40</span> 【上午景點】櫻之馬場 城彩苑 & 熊本城", unsafe_allow_html=True)
         st.write("**第一站 (城彩苑)：** 步行 3 分鐘先到仿江戶時代的城下町「城彩苑」，有很多好拍的街景和特色小吃 (海膽可樂餅、芥末蓮藕)。")
@@ -425,12 +449,14 @@ with tab1:
         st.write("**動線：** 餐廳外面就是熱鬧的 **「下通商店街」**，有拱廊不怕風吹日曬。一路往北走約 15 分鐘會連通到「鶴屋百貨」。")
         st.write("🌟 **熊本熊部長辦公室 (Kumamon Square)：** 熊本熊大本營！若想看本尊的下午 15:00 見面會表演，記得 **14:30** 就要去卡位，人會非常多！")
         st.link_button("📍 導航：熊本熊部長辦公室", "https://www.google.com/maps/search/?api=1&query=Kumamon+Square")
+        st.markdown("🛍️ 購物攻略參考：[2026熊本購物必逛攻略｜上通、下通商店街+車站周邊必買](https://www.bring-you.info/zh-tw/kumamoto-shopping-guide)")
         
         st.markdown("##### <span class='time-badge'>17:00</span> 【熊本車站採買】肥後よかモン市場", unsafe_allow_html=True)
         st.link_button("🗺️ 路線：通町筋 ➡ 熊本車站", "https://maps.app.goo.gl/mFG4fTckyxgFPxXH9")
         st.write("**搭車：** 從水道町或通町筋搭市電 A 系統回到熊本車站。")
         st.write("**目標：** 新幹線改札口正對面的市場。必買 **「熊本熊圓形便當」** (可重複微波使用的便當盒當紀念)，或買個阿蘇赤牛便當當宵夜。")
         st.link_button("📍 導航：肥後よかモン市場", "https://www.google.com/maps/search/?api=1&query=肥後よかモン市場")
+        st.markdown("🎥 熊本車站周邊攻略：[最完整熊本車站周邊全攻略｜美食購物住宿](https://www.youtube.com/watch?v=4IxvIkJMn9Q)")
         
         st.markdown("##### <span class='time-badge'>17:20</span> 【回程】新幹線 Tsubame 328 (燕子號)", unsafe_allow_html=True)
         st.link_button("🗺️ 路線：熊本車站 ➡ 博多車站", "https://maps.app.goo.gl/3H5Nmctx35eenUu5A")
