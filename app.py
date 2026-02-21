@@ -119,6 +119,10 @@ with tab1:
         </div>
         """, unsafe_allow_html=True)
         
+        # 新增的 YouTube 影片教學
+        st.caption("🎥 實景走法請參考以下影片（從下飛機到搭巴士）：")
+        st.video("https://www.youtube.com/watch?v=pRwDSFJskzQ")
+        
         st.markdown("##### <span class='time-badge'>21:20</span> 市區移動 (地鐵轉乘)", unsafe_allow_html=True)
         st.markdown("""
         <div class="route-box">
@@ -362,7 +366,7 @@ with tab1:
         <div class="ticket-box">
         <b>桃園 16:34 → 台中 17:15</b><br>
         班次：841 車次<br>
-        備註：時間非常充裕，可在高鐵站喝咖啡休息，圓滿結束北九州舒活孝親行！
+        備註：時間非常充裕，可在高鐵站喝咖啡休息，圓滿結束北九州行！
         </div>
         """, unsafe_allow_html=True)
 
@@ -434,4 +438,3 @@ with tab3:
     st.markdown("### 🍽️ 餐廳預約")
     st.success("藥院燒肉 肉一：3/2 19:00 (4人)")
     st.caption("預約大名：鄭又豪 先生")
-
