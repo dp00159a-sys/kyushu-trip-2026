@@ -108,11 +108,11 @@ with tab1:
             
         st.info("💡 **出發前溫馨提醒 (領隊廣播)：** 請務必提醒家人要帶上「日本的交通卡」(Suica、ICOCA 等)。雖然現場買實體票也可以，但帶著長輩拉行李，能直接「嗶」卡進出站，絕對會讓旅程一開始就順暢無比！")
         
-        st.markdown("##### <span class='time-badge'>12:00</span> 台灣出發", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>12:00</span> 【台灣出發】前往機場", unsafe_allow_html=True)
         st.write("**動作：** 從高鐵台中站出發。搭乘 **630 車次 (12:00 發車)** 前往高鐵桃園站，轉乘機捷抵達航廈。")
         st.write("**航班：** 長榮航空 BR102 (桃園機場 T2 / 16:25 準時起飛)。")
         
-        st.markdown("##### <span class='time-badge'>19:55</span> 抵達日本 (福岡機場出關)", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>19:55</span> 【抵達日本】福岡機場出關與接駁", unsafe_allow_html=True)
         st.markdown("""
         <div class="route-box">
         <b>🚌 機場移動動線 (重要更新)：</b><br>
@@ -121,27 +121,33 @@ with tab1:
         3. <b>搭乘接駁巴士 (車程約 10 分鐘)</b>，巴士會直接載您抵達國內線航廈的「福岡機場地鐵站」入口。
         </div>
         """, unsafe_allow_html=True)
-        
         st.caption("🎥 實景走法請參考以下影片（從下飛機到搭巴士）：")
         st.video("https://www.youtube.com/watch?v=pRwDSFJskzQ")
         
-        st.markdown("##### <span class='time-badge'>21:20</span> 市區移動 (地鐵轉乘)", unsafe_allow_html=True)
-        st.write("**進站：** 拿出準備好的交通卡感應進站。")
+        st.markdown("##### <span class='time-badge'>21:20</span> 【市區移動】地鐵轉乘 (機場 ➡ 飯店)", unsafe_allow_html=True)
+        st.write("**進站：** 拿出準備好的交通卡 (Suica/ICOCA) 感應進站。")
         st.markdown("""
         <div class="route-box">
-        <b>第一段 (空港線)：</b> 從【福岡機場站】搭乘地下鐵空港線，搭 2 站在 <b>【博多站】</b> 下車。<br>
-        <b>🚶 站內轉乘動線：</b> 下車後跟著綠色指標「七隈線」走。這段連通道設有<b>「電動步道」</b>，慢慢走約 6 分鐘。<br>
-        <b>第二段 (七隈線)：</b> 搭乘往「橋本」方向的列車，<b>僅搭 1 站</b>，在 <b>【渡邊通站】</b> 下車。
+        <b>第一段 (空港線)：</b><br>
+        從【福岡機場站】搭乘地下鐵「空港線」（往姪濱/唐津方向）。搭乘 2 站，在 <b>【博多站】</b> 下車。<br><br>
+        <b>🚶 博多站內轉乘動線：</b><br>
+        在博多站下車後，請跟著綠色指標 <b>「七隈線 (Nanakuma Line)」</b> 走。<br>
+        這段連通道設有<b>「電動步道」</b>，請讓長輩站上去順順地滑過去，慢慢走大約需要 6 分鐘。<br><br>
+        <b>第二段 (七隈線)：</b><br>
+        走到七隈線月台後，搭乘往「橋本」方向的列車。<br>
+        僅搭乘 1 站，在 <b>【渡邊通站 (Watanabedori)】</b> 下車。
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("##### <span class='time-badge'>22:00</span> 飯店入住", unsafe_allow_html=True)
-        st.write("**出口指引：** 在【渡邊通站】下車後，**請務必尋找「2號出口」(有手扶梯)**，絕對不要讓家人第一天就扛行李爬樓梯。")
-        st.write("**步行至飯店：** 從 2 號出口一到地面直接左轉，過一座小橋後，飯店即在右手邊。辦理 Check-in。")
+        st.markdown("##### <span class='time-badge'>22:00</span> 【飯店入住】Cross Life 博多柳橋", unsafe_allow_html=True)
+        st.write("**車站出口指引：**")
+        st.write("在【渡邊通站】下車後，請務必尋找 **「2號出口」**！為什麼選這出口？因為 2 號出口有 **「手扶梯」**，絕對不要讓家人第一天就扛行李爬樓梯。")
+        st.write("**步行至飯店：**")
+        st.write("從 2 號出口一到地面，**直接左轉**。往前走會過一座小橋（橋下是那珂川），過橋後馬上就會看到飯店在您的右手邊。")
         st.link_button("📍 導航：Cross Life 博多柳橋", "https://www.google.com/maps/search/?api=1&query=Cross+Life+博多柳橋")
         
-        st.markdown("##### <span class='time-badge'>22:30</span> 夜間補給", unsafe_allow_html=True)
-        st.write("**地點：** 飯店附近的 Sunny 超市 (24小時營業)。")
+        st.markdown("##### <span class='time-badge'>22:30</span> 【夜間補給】Sunny 超市 (24小時營業)", unsafe_allow_html=True)
+        st.write("**地點：** 飯店附近的 Sunny 超市 (渡邊通店)。")
         st.write("**採買任務：** 大瓶裝礦泉水 (2L)、博多甘王草莓 (九州必吃宵夜)、優格/牛奶，以及若隔日不想排隊名店可先買好的早餐備品。")
         st.link_button("📍 導航：Sunny 超市 渡邊通店", "https://www.google.com/maps/search/?api=1&query=Sunny+渡邊通店")
 
@@ -152,69 +158,70 @@ with tab1:
         if os.path.exists("出國前最終確認：Day 2 (週一).jpg"):
             st.image("出國前最終確認：Day 2 (週一).jpg", use_column_width=True)
             
-        st.markdown("##### <span class='time-badge'>08:00</span> 晨間散步：柳橋連合市場", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>08:00</span> 【晨間散步】柳橋連合市場 (視體力彈性安排)", unsafe_allow_html=True)
         st.write("**出發：** 從飯店走出來約 2 分鐘即達「博多的廚房」。")
         st.write("**看點：** 早上市場最有活力，可以看在地海鮮、買個現做的魚漿天婦羅（甜不辣）或玉子燒當早點。")
         st.info("💡 **備註：** 如果長輩想睡晚一點，這個點可以隨時取消，或是移到 Day 6 早上。")
         st.link_button("📍 導航：柳橋連合市場", "https://www.google.com/maps/search/?api=1&query=柳橋連合市場")
             
-        st.markdown("##### <span class='time-badge'>08:30</span> 早餐：挑戰名店或輕鬆吃", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>08:30</span> 【早餐】挑戰名店或輕鬆吃", unsafe_allow_html=True)
         st.markdown("""
         * **選項 A (網美挑戰)：** DACOMECCA 麵包店 (博多站旁，需搭地鐵過去排隊)。
         * **選項 B (輕鬆路線)：** 直接在飯店附近吃麥當勞、超商，或市場買的小吃墊胃。
         """)
         st.link_button("📍 導航：飯店周邊超市備案", "https://maps.app.goo.gl/DuySWvfGregfzPVN9")
         
-        st.markdown("##### <span class='time-badge'>09:00</span> 景點：櫛田神社", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>09:00</span> 【景點】櫛田神社", unsafe_allow_html=True)
         st.write("**動線：** 吃飽後前往櫛田神社參拜，這裡是博多總鎮守，有巨大的裝飾山笠可以看。")
-        st.link_button("🗺️ 交通路線：住宿地 ➡ 櫛田神社", "https://maps.app.goo.gl/aJ2i48juTxBv3sd16")
+        st.link_button("🗺️ 路線：住宿地 ➡ 櫛田神社", "https://maps.app.goo.gl/aJ2i48juTxBv3sd16")
             
-        st.markdown("##### <span class='time-badge'>09:40</span> 市區移動：前往西鐵天神站", unsafe_allow_html=True)
-        st.write("**動線：** 參拜完後，前往西鐵福岡(天神)站準備搭車。")
-        st.link_button("🗺️ 交通路線：櫛田神社 ➡ 西鐵福岡(天神)站", "https://maps.app.goo.gl/3UNNjEkgfMiTyCjq5")
+        st.markdown("##### <span class='time-badge'>09:40</span> 【市區移動】前往西鐵天神站", unsafe_allow_html=True)
+        st.write("**動線：** 參拜完後，前往西鐵福岡(天神)站準備搭車。沿著地下街的指標，往上走到 2F/3F 的【西鐵福岡(天神)站】。")
+        st.link_button("🗺️ 路線：櫛田神社 ➡ 西鐵福岡(天神)站", "https://maps.app.goo.gl/3UNNjEkgfMiTyCjq5")
             
-        st.markdown("##### <span class='time-badge'>10:00</span> 前往太宰府 (西鐵電車)", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>10:00</span> 【前往太宰府】搭乘西鐵電車", unsafe_allow_html=True)
         st.write("**交通方式：** 直接刷實體交通卡進站 (Suica/ICOCA)。不用買套票！")
-        st.link_button("🗺️ 交通路線：西鐵福岡(天神)站 ➡ 太宰府", "https://maps.app.goo.gl/WRuenQ4sic7QknZS9")
+        st.link_button("🗺️ 路線：西鐵福岡(天神)站 ➡ 太宰府", "https://maps.app.goo.gl/WRuenQ4sic7QknZS9")
         st.markdown("""
         <div class="route-box">
         <b>✨ 列車選擇攻略：</b><br>
-        1. <b>直達車 (首選)：</b> 尋找直達太宰府的<b>「旅人號 (Tabito)」或直達急行</b>，如果遇到，請直接跳上去，不用換車！<br>
-        2. <b>一般急行 (備案)：</b> 如果沒遇到直達車，就搭往「大牟田」方向的特急/急行，在 <b>【西鐵二日市站】</b> 下車，轉搭「太宰府線」。
+        1. <b>直達車 (首選)：</b> 平日早上 (約 09:46 左右，依現場班表為準) 尋找直達太宰府的<b>「旅人號 (Tabito)」或直達急行</b>，如果遇到，請直接跳上去，不用換車！<br>
+        2. <b>一般急行 (備案)：</b> 如果沒遇到直達車，就搭往「大牟田」方向的特急/急行，在 <b>【西鐵二日市站】</b> 下車，同月台或換月台轉搭「太宰府線」。
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("##### <span class='time-badge'>10:45</span> 太宰府散策：賞梅與吃餅", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>10:45</span> 【太宰府散策】賞梅與吃餅", unsafe_allow_html=True)
         st.markdown("""
         * **必看亮點 1：** 期間限定「臨時本殿」 (漂浮森林屋頂，非常特別！)。
         * **必看亮點 2：** 3 月初正值太宰府的梅花季，整個天滿宮會有粉白相間的梅花，非常適合幫長輩拍照。
         * **吃喝採買：** 參道上的「梅枝餅」(現烤的最好吃) 以及隈研吾設計的「星巴克」。
         """)
-        st.info("💡 **備用景點 (強烈建議 PASS)：** 九州國立博物館或光明禪寺/竈門神社距離較遠需爬坡。為了下午逛街保留體力，建議不要去！")
+        st.info("💡 **備用景點 (強烈建議 PASS)：** 九州國立博物館或光明禪寺/竈門神社距離較遠需爬坡或轉公車。為了下午逛街保留體力，強烈建議直接 PASS！")
         st.link_button("📍 導航：太宰府天滿宮", "https://www.google.com/maps/search/?api=1&query=太宰府天滿宮")
 
-        st.markdown("##### <span class='time-badge'>13:00</span> 午餐：彈性安排", unsafe_allow_html=True)
-        st.write("可以在太宰府參道吃一蘭拉麵（合格五角形碗）、暖暮拉麵或定食。如果太擠，就搭車回天神再吃。")
+        st.markdown("##### <span class='time-badge'>13:00</span> 【午餐】太宰府周邊 或 回天神吃", unsafe_allow_html=True)
+        st.write("彈性安排：可以在太宰府參道吃一蘭拉麵（合格五角形碗）、暖暮拉麵或定食。如果太擠，就搭車回天神再吃。")
         
-        st.markdown("##### <span class='time-badge'>14:30</span> 下午逛街：天神地下街 ➡ Mina 天神", unsafe_allow_html=True)
-        st.link_button("🗺️ 交通路線：太宰府 ➡ Mina 天神", "https://maps.app.goo.gl/VidKxg6SQzkzp3Va6")
-        st.write("**動線 (不曬太陽/不淋雨)：** 搭西鐵回天神後，直接鑽進【天神地下街】(有椅子可休息，還能買 BAKE 起司塔、RINGO)。一路往北走到底，直接連通【Mina 天神】。")
+        st.markdown("##### <span class='time-badge'>14:30</span> 【下午逛街】天神地下街 ➡ Mina 天神", unsafe_allow_html=True)
+        st.link_button("🗺️ 路線：太宰府 ➡ Mina 天神", "https://maps.app.goo.gl/VidKxg6SQzkzp3Va6")
+        st.write("**動線 (不曬太陽/不淋雨)：** 搭西鐵回天神後，直接鑽進【天神地下街】。這裡有洗手間、椅子可休息，還能買 BAKE 起司塔、RINGO 蘋果派。一路往北走到底，直接連通【Mina 天神】。")
         st.write("**主力戰場 (Mina 天神)：** UNIQLO (九州最大旗艦店)、GU、LOFT、Seria (百元店)。長輩可以坐在服飾店的沙發區等您結帳。")
         
-        st.markdown("##### <span class='time-badge'>18:20</span> 前往晚餐：兩種移動方案", unsafe_allow_html=True)
-        st.link_button("🗺️ 交通路線：Mina 天神 ➡ 藥院燒肉 肉一", "https://maps.app.goo.gl/tuiCUiYwKxf2w82n7")
+        st.markdown("##### <span class='time-badge'>18:20</span> 【前往晚餐】兩種移動方案", unsafe_allow_html=True)
+        st.link_button("🗺️ 路線：Mina 天神 ➡ 藥院燒肉 肉一", "https://maps.app.goo.gl/tuiCUiYwKxf2w82n7")
         st.markdown("""
         <div class="route-box">
-        <b>方案 A (搭西鐵)：</b> 沿著地下街慢慢走回【西鐵天神站】，搭一站到【西鐵藥院站】，再走 3-5 分鐘到餐廳。(缺點：對走了一下午的長輩來說有點折磨)。<br>
-        <b>方案 B (🚕 強烈建議 - 搭計程車)：</b> 逛完 Mina 天神，直接請百貨櫃檯幫忙叫車，或是走到大馬路上攔車。4 個人平分車資約 ¥1,000 日圓出頭，直達燒肉店門口，長輩會覺得您是世界上最棒的導遊。
+        這時候您們人在 Mina 天神 (天神最北邊)，但餐廳在藥院 (偏南邊)。<br><br>
+        <b>方案 A (您的提議 - 搭西鐵)：</b> 沿著地下街慢慢走回【西鐵天神站】，搭一站到【西鐵藥院站】，再走 3-5 分鐘到餐廳。(缺點：要先走回天神站，這段路對走了一下午的長輩來說有點折磨)。<br><br>
+        <b>方案 B (🚕 我的強烈建議 - 搭計程車)：</b> 逛完 Mina 天神，直接請百貨櫃檯幫忙叫車，或是走到大馬路上攔車。4 個人平分車資約 ¥1,000 日圓出頭，直達燒肉店門口，長輩會覺得您是世界上最棒的導遊。
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("##### <span class='time-badge'>19:00</span> 重頭戲晚餐：藥院燒肉 肉一", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>19:00</span> 【重頭戲晚餐】藥院燒肉 肉一 (Yakiniku Nikuichi)", unsafe_allow_html=True)
         st.success("✅ 確認事項：已預約 19:00 / 4 位 / 鄭又豪先生。")
-        st.write("**必點：** 豪華黑毛和牛拼盤、盛岡冷麵 (解膩神物)。這家肉質很軟嫩，長輩牙口不好絕對沒問題。")
+        st.write("**必點：** 豪華黑毛和牛拼盤、盛岡冷麵 (解膩神物)。如果長輩牙口不好，這家肉質很軟嫩，絕對沒問題。")
 
-        st.markdown("##### <span class='time-badge'>21:00</span> 返回飯店", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>21:00</span> 【返回飯店】", unsafe_allow_html=True)
         st.write("**交通：** 餐廳門口直接搭計程車回 Cross Life 博多柳橋（超近，起步價左右就到了），結束完美的一天。")
 
     # --- Day 3 ---
@@ -224,45 +231,54 @@ with tab1:
         if os.path.exists("出國前最終確認：Day 3 (週二) .jpg"):
             st.image("出國前最終確認：Day 3 (週二) .jpg", use_column_width=True)
         
-        st.markdown("##### <span class='time-badge'>08:00</span> 飯店出發 (交通升級)", unsafe_allow_html=True)
-        st.write("**早餐建議：** 前一晚在超商買好早餐，房間吃完再下樓。")
-        st.warning("🚕 **首選交通 (計程車)：** 絕對不要讓長輩走 20 分鐘去博多站！請直接在飯店叫車直達博多站博多口 (約 ¥1000)。")
-        st.link_button("🗺️ 交通路線：住宿地 ➡ 海洋世界海之中道", "https://maps.app.goo.gl/VLqBvFM5QqudXBye7")
+        st.markdown("##### <span class='time-badge'>08:00</span> 【飯店出發】前往博多車站 (交通升級)", unsafe_allow_html=True)
+        st.write("**早餐建議：** 因為要提早出發，建議前一晚在 Sunny 超市買好早餐，在飯店房間悠哉吃完再下樓。")
+        st.warning("🚕 **首選交通 (計程車)：** 絕對不要讓長輩走 20 分鐘去博多站！早上走這一段到水族館就累了。請直接在飯店叫車直達博多站博多口 (約 ¥1000 左右，完全不用走路)。<br>🚌 **備案交通 (西鐵巴士)：** 走到飯店外大馬路上的「柳橋」公車站牌，搭乘前往博多站的西鐵巴士。")
+        st.link_button("🗺️ 路線：住宿地 ➡ 海洋世界海之中道", "https://maps.app.goo.gl/VLqBvFM5QqudXBye7")
         
-        st.markdown("##### <span class='time-badge'>08:25</span> 前往海之中道 (JR轉乘)", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>08:25</span> 【前往海之中道】JR 轉乘", unsafe_allow_html=True)
+        st.write("**進站找月台：** 從博多口走進車站，刷交通卡進站。尋找往「小倉、門司港、福間」方向的鹿兒島本線 (通常在 1 號或 2 號月台)。")
         st.markdown("""
         <div class="route-box">
-        <b>Step 1:</b> 博多站 1/2 號月台 (鹿兒島本線) 搭 08:30 左右列車 → <b>【香椎站】</b> (車程10-15分)。<br>
-        <b>Step 2 (⚠️ 關鍵轉乘):</b> 香椎站下車，<b>必須走樓梯/電梯上天橋</b>，換到 <b>4 號或 5 號月台 (香椎線)</b>。<br>
-        <b>Step 3:</b> 搭乘 08:50~09:00 左右往「西戶崎」的列車 → <b>【海之中道站】</b> (車程約20分)。
+        <b>第一段：博多 ➡ 香椎</b><br>
+        搭乘 08:30 左右發車的「快速」或「普通」列車 → <b>【香椎站】</b> (車程 10-15 分鐘)。<br><br>
+        <b>⚠️ 關鍵轉乘：香椎站 (Kashii) 換月台</b><br>
+        在香椎站下車後，<b>必須走樓梯/電梯上天橋</b>，跟著藍色指標或地上畫的藍線，換到 <b>4 號或 5 號月台 (香椎線)</b>。<br><br>
+        <b>第二段：香椎 ➡ 海之中道</b><br>
+        搭乘 08:50~09:00 左右往「西戶崎」的列車 → <b>【海之中道站】</b> (車程約 20 分鐘)。出站後跟著人群走，水族館就在旁邊。
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("##### <span class='time-badge'>09:30</span> 福岡海洋世界 Marine World", unsafe_allow_html=True)
-        st.success("🎫 門票預約：09:30 (4 位成人)。準備手機憑證掃碼入場。")
+        st.markdown("##### <span class='time-badge'>09:30</span> 【水族館】福岡海洋世界 Marine World", unsafe_allow_html=True)
+        st.success("🎫 門票預約：09:30 預約場次 (4 位成人)。準備好手機憑證直接掃碼入場。")
         st.markdown("""
-        * **黃金動線：** 趁人少先去「全景大水槽」看沙丁魚風暴與海豹/企鵝。
-        * **海豚表演：** 10:45 提早前往劇場找陰涼座位。**11:00 準時觀賞精彩海豚海獅秀**。
-        * **午餐安排：** 表演結束後，可直接在館內的「Reilly 餐廳」用餐，在水下玻璃旁看海豚游泳吃飯，長輩最愛！
+        * **09:30 - 10:30 (黃金動線)：** 趁人少先去逛「全景大水槽」（看鯊魚和沙丁魚）、海豹區、企鵝區。
+        * **10:45 (提早佔位)：** 提早前往「海豚表演劇場」找個視野好、不用曬太陽的位子坐下休息。
+        * **11:00 (海豚表演)：** 觀賞精彩的海豚與海獅秀。
+        * **午餐安排：** 表演結束後，可直接在館內的「Reilly 餐廳」用餐，這家餐廳可以在水下玻璃旁一邊看海豚游泳一邊吃飯，長輩一定喜歡！
         """)
+        st.link_button("📍 導航：Marine World", "https://www.google.com/maps/search/?api=1&query=マリンワールド海の中道")
         
-        st.markdown("##### <span class='time-badge'>13:30</span> 提早離開 & 返回市區", unsafe_allow_html=True)
-        st.info("💡 **彈性評估：** 旁邊的海濱公園佔地極大，若長輩需要休息，強烈建議果斷放棄公園，原路搭 JR 返回市區 (可在【千早站】下車轉搭西鐵回天神)。")
+        st.markdown("##### <span class='time-badge'>13:30</span> 【彈性評估】海濱公園 或 提早回市區", unsafe_allow_html=True)
+        st.info("💡 **領隊當下判斷：** 海濱公園非常大，光是走到花海區就要走很久。強烈建議果斷放棄公園，保留體力慢慢走回 JR 車站，搭車回市區 (可在【千早站】下車轉搭西鐵回天神)。")
         
-        st.markdown("##### <span class='time-badge'>15:30</span> 下午逛街：天神北商圈", unsafe_allow_html=True)
-        st.link_button("🗺️ 交通路線：海之中道 ➡ Mina 天神", "https://maps.app.goo.gl/7kneK1btSUQ92DvR6")
+        st.markdown("##### <span class='time-badge'>15:30</span> 【下午逛街】天神北商圈大採買", unsafe_allow_html=True)
+        st.link_button("🗺️ 路線：海之中道 ➡ Mina 天神", "https://maps.app.goo.gl/7kneK1btSUQ92DvR6")
         st.markdown("""
-        * **1. Full Full 天神店：** 必買九州最有名的「明太子法國麵包」，買回飯店當宵夜/早餐超讚。
-        * **2. AEON Shoppers 福岡店：** B1 超市非常好買，採購零食、茶包等輕量伴手禮。
+        * **1. Full Full 天神店：** 必買九州最有名的「明太子法國麵包」，這時間通常剛出爐，買回飯店當宵夜/早餐都超讚。
+        * **2. AEON Shoppers 福岡店：** 這是一整棟的大型超市與商場。B1 的超市非常好買，可以讓長輩採購零食、茶包、調味料等體積小、重量輕的伴手禮。
         """)
+        st.link_button("📍 導航：Full Full 天神", "https://www.google.com/maps/search/?api=1&query=フルフル天神パン工房")
+        st.link_button("📍 導航：AEON Shoppers", "https://www.google.com/maps/search/?api=1&query=イオンショッパーズ福岡店")
         
-        st.markdown("##### <span class='time-badge'>17:20</span> 重頭戲晚餐：天麩羅處 Hirao", unsafe_allow_html=True)
-        st.write("**策略：** 這家當地靈魂美食**不能訂位！** 提早去大名店排隊大幅縮短時間。買食券入座，師傅現炸。桌上免費的**「柚子花枝醃鹽辛」**超級下飯必吃！")
+        st.markdown("##### <span class='time-badge'>17:20</span> 【重頭戲晚餐】天麩羅處 Hirao (大名店)", unsafe_allow_html=True)
+        st.write("**策略：** 這家是福岡當地人的靈魂美食，**不能訂位！** 如果 18:30 下班時間才去，絕對會排隊排到懷疑人生。17:20 抵達可以大幅縮短排隊時間。")
+        st.write("**必吃特色：** 買好食券入座後，師傅現炸放到您盤子裡。桌上免費無限續加的**「柚子花枝醃鹽辛 (いかの塩辛)」**才是本體，超級下飯！")
         st.link_button("📍 導航：天麩羅處 Hirao 大名", "https://www.google.com/maps/search/?api=1&query=天麩羅処ひらお+大名店")
 
-        st.markdown("##### <span class='time-badge'>19:00</span> 返回飯店", unsafe_allow_html=True)
-        st.write("吃飽後長輩也累了，強烈建議直接在大馬路 (國體道路) 上攔計程車或搭車回飯店。")
-        st.link_button("🗺️ 交通路線：天神南 ➡ 住宿飯店", "https://maps.app.goo.gl/vV41q2DNK4nfKgJd7")
+        st.markdown("##### <span class='time-badge'>19:00</span> 【返回飯店】", unsafe_allow_html=True)
+        st.write("**交通：** 吃飽喝足後，長輩今天也走了不少路。強烈建議直接在大馬路 (國體道路) 上攔計程車回 Cross Life 飯店。")
+        st.link_button("🗺️ 路線：天神南 ➡ 住宿飯店", "https://maps.app.goo.gl/vV41q2DNK4nfKgJd7")
 
     # --- Day 4 ---
     elif "Day 4" in day:
@@ -271,59 +287,70 @@ with tab1:
         if os.path.exists("出國前最終確認：Day 4 (週三) .jpg"):
             st.image("出國前最終確認：Day 4 (週三) .jpg", use_column_width=True)
             
-        st.info("💡 **領隊廣播 (出發前必確認)：**<br>1. **實體信用卡必帶：** 早上到博多站要用機台領音速號車票。<br>2. **交通卡必帶：** 今天的無痛轉乘全靠交通卡，請確保有千元餘額。")
+        st.info("💡 **領隊晨間廣播 (出發前必確認)：**<br>1. **實體信用卡必帶：** 早上到博多站的第一件事，就是去機台領取「音速號」車票，必須帶當初刷的那張實體信用卡！<br>2. **交通卡必帶：** 今天的轉乘策略已改為「全自動化」，不用跟站務員講話，交通卡請確保有 1,000 日圓的餘額。")
         
-        st.markdown("##### <span class='time-badge'>09:00</span> 抵達車站：博多站領票進站", unsafe_allow_html=True)
-        st.write("**動作：** 找到「綠色售票機」插入信用卡領取來回實體車票。拿「博多 ➡ 小倉」車票進閘門。")
-        st.link_button("🗺️ 交通路線：博多車站 ➡ 小倉車站", "https://maps.app.goo.gl/98UeENt9L5fdeYYd9")
+        st.markdown("##### <span class='time-badge'>09:00</span> 【抵達車站】博多站領票與進站", unsafe_allow_html=True)
+        st.write("**動作：** 到博多站的「綠色售票機（みどりの券売機）」領取來回的音速號實體車票。拿著「博多 ➡ 小倉」的車票放入自動閘門進站。")
+        st.write("**找月台：** 抬頭尋找往「小倉、大分」方向的特急列車月台（通常在 2 號或 3 號月台）。")
+        st.link_button("🗺️ 路線：博多車站 ➡ 小倉車站", "https://maps.app.goo.gl/98UeENt9L5fdeYYd9")
         
-        st.markdown("##### <span class='time-badge'>09:21</span> 去程：音速號 Sonic 11", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>09:21</span> 【去程】音速號 Sonic 11 (博多 ➡ 小倉)", unsafe_allow_html=True)
         st.markdown("""
         <div class="ticket-box">
         <b>博多 09:21 → 小倉 10:10</b><br>
         座位：<span class="highlight">3 號車 3AB, 4AB</span><br>
-        ⚠️ <b>重要動作：</b> 找到座位後，記得踩著踏板把椅子轉向，面對面坐著聊天！
+        ⚠️ <b>重要動作：</b> 找到座位後，記得踩著椅子下方的踏板，<b>把其中一排椅子轉向</b>，讓全家人可以面對面坐著聊天看風景！
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("##### <span class='time-badge'>10:10</span> 小倉站去程轉乘 (無痛轉乘神技)", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>10:10</span> 【去程關鍵轉乘】小倉站 (無痛轉乘：先出再進)", unsafe_allow_html=True)
         if os.path.exists("kokura_transfer.jpg"):
             st.image("kokura_transfer.jpg", caption="下車後搭手扶梯上樓，走到出站閘門切換票券", use_column_width=True)
-        st.link_button("🗺️ 交通路線：小倉車站 ➡ 門司港", "https://maps.app.goo.gl/Di2YNWiHU2FrLmgp9")
-        st.write("**1. 出站：** 放入「音速號車票」出閘門。")
-        st.write("**2. 進站：** 轉身拿出「交通卡」嗶卡重新進站！")
-        st.write("**3. 換月台：** 去尋找往門司港的指標 (約 8 號月台) 搭普通車。")
+        st.link_button("🗺️ 路線：小倉車站 ➡ 門司港", "https://maps.app.goo.gl/Di2YNWiHU2FrLmgp9")
+        st.write("為避免語言不通的補票困擾，請執行以下無痛轉乘動作：")
+        st.write("**1. 出站：** 下車後搭手扶梯上樓，走到出站閘門。把您手上的**「音速號車票」放入機器**，機器收走車票出站。")
+        st.write("**2. 進站：** 在閘門外轉個身，立刻拿出**「實體交通卡 (Suica/ICOCA)」**，嗶卡重新進站！")
+        st.write("**3. 換月台：** 進站後尋找**「鹿兒島本線 (往門司港)」**指標（通常 8 號月台），搭乘普通/快速列車 (約 10-15 分鐘一班)。")
         
-        st.markdown("##### <span class='time-badge'>10:45</span> 抵達門司港：大正浪漫之旅起點", unsafe_allow_html=True)
-        st.write("直接嗶交通卡出站 (扣款結清)。出站就是充滿大正風華的木造車站。")
+        st.markdown("##### <span class='time-badge'>10:45</span> 【抵達門司港】大正浪漫之旅起點", unsafe_allow_html=True)
+        st.write("**出站：** 直接用交通卡「嗶」出站（自動扣款約 280 日圓），完全免講話。")
+        st.write("**第一站 (JR 門司港車站)：** 一出站就是日本重要文化財的百年木造車站，記得拍攝大正時期的復古月台與新文藝復興風格外觀。裡面有超美的復古星巴克可上廁所。")
+        st.link_button("📍 導航：門司港車站", "https://www.google.com/maps/search/?api=1&query=門司港駅")
         
-        st.markdown("##### <span class='time-badge'>11:00</span> 午餐與跨海路線選擇 (雙備案)", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>11:00</span> 【午餐與跨海路線選擇】(雙備案)", unsafe_allow_html=True)
+        st.write("請視當下長輩體力與天氣，彈性選擇 A 或 B 路線：")
         st.markdown("""
         <div class="route-box">
-        <b>🌟 選項 A (推薦：跨海吃海鮮與歷史巡禮)：</b><br>
-        1. <b>搭船：</b> 走到門司港棧橋，搭 11:00 聯絡船前往下關 (單程¥400，約5分)。<br>
-        2. <b>唐戶市場午餐：</b> 週三無一樓市集，請帶長輩直上二樓吃海轉壽司或海鮮定食。<br>
-        3. <b>歷史巡禮：</b> 散步 5-7 分鐘至「日清講和紀念館」(馬關條約現場) & 「赤間神宮」(龍宮造型紅白大門)。<br>
-        4. <b>🚢 關鍵回程：最晚必須搭上 14:10 的船回門司港。</b><br>
+        <b>🌟 選項 A (推薦主線：跨海吃海鮮與歷史巡禮 - 下關側)：</b><br>
+        1. <b>前往碼頭搭船：</b> 走 2 分鐘到「門司港棧橋」。買票搭前往「下關（唐戶）」的聯絡船 (單程 ¥400，航程僅 5 分鐘)。<br>
+        2. <b>唐戶市場 (11:15)：</b> 下船右轉走 3 分鐘。今天是週三無屋台，請帶長輩直接上 <b>二樓的「海轉唐戶市場壽司」或定食餐廳</b> 舒服坐著吃。<br>
+        3. <b>歷史巡禮 (12:45)：</b> 散步 5-7 分鐘至<b>「日清講和紀念館 (春帆樓)」</b> (李鴻章與伊藤博文簽署馬關條約的歷史現場，免費參觀) 以及旁邊有龍宮造型大門的<b>「赤間神宮」</b>。<br>
+        4. <b>🚢 關鍵回程船班：</b> 為了不耽誤下午行程，請最晚搭上 <b>14:10</b> 的船回門司港。<br>
         <hr style="margin:5px 0;">
-        <b>🌟 選項 B (備案：留在門司港吃名物)：</b><br>
-        風浪大不想搭船，直接留在門司港吃「燒咖哩」。車站附近的 Bear Fruits 香濃焗烤咖哩非常美味。
+        <b>🌟 選項 B (備用輕鬆版：留在門司港吃名物)：</b><br>
+        如果風浪大或不想搭船，直接留在門司港吃名物<b>「燒咖哩 (烤咖哩)」</b>。車站附近的「Bear Fruits」或「Princess Phi Phi」都是好選擇，香濃咖哩配焗烤起司非常美味。
         </div>
         """, unsafe_allow_html=True)
         st.link_button("📍 導航：唐戶市場", "https://www.google.com/maps/search/?api=1&query=唐戸市場")
         st.link_button("📍 導航：日清講和紀念館", "https://www.google.com/maps/search/?api=1&query=日清講和記念館")
         st.link_button("📍 導航：赤間神宮", "https://www.google.com/maps/search/?api=1&query=赤間神宮")
         
-        st.markdown("##### <span class='time-badge'>14:20</span> 午後散策：門司港懷舊區", unsafe_allow_html=True)
-        st.write("沿海港散步：拍著名的「香蕉人」雕像、去舊門司稅關沙發區休息、看「藍翼橋」開橋 (14:00 或 15:00)。")
-        st.write("**下午茶：** 15:30 帶家人去「Mooon de Retro」吃水果聖代順便上廁所。")
+        st.markdown("##### <span class='time-badge'>14:20</span> 【午後散策】門司港懷舊區經典巡禮", unsafe_allow_html=True)
+        st.write("沿著海港邊的平路慢慢散步拍照：")
+        st.write("1. **舊大阪商船大樓 & 舊門司稅關：** 西洋風味百年建築，稅關內部有免費的休息空間可坐。")
+        st.write("2. **藍翼橋 (Blue Wing Moji)：** 日本最大行人專用吊橋。橋面會在 14:00 和 15:00 打開，記得卡位看開橋！")
+        st.write("3. **海峽廣場 (KAIKYO PLAZA)：** 伴手禮聚集地，**必拍著名的「香蕉人」雕像**。")
+        st.write("4. **下午茶時光 (15:30)：** 逛累了去網美愛店 **「Mooon de Retro」** 吃華麗水果聖代，順便上廁所準備搭車。")
         
-        st.markdown("##### <span class='time-badge'>16:30</span> 回程轉乘 (門司港 ➡ 小倉)", unsafe_allow_html=True)
-        st.link_button("🗺️ 交通路線：門司港 ➡ 小倉車站", "https://maps.app.goo.gl/EZrm7WS4Lcsrj3BN8")
-        st.write("**16:30** 嗶交通卡進門司港站搭車。抵達小倉後執行相反神技：**1. 嗶交通卡出站** ➡ **2. 放入回程「音速號車票」進站**。")
+        st.markdown("##### <span class='time-badge'>16:30</span> 【回程轉乘】門司港 ➡ 小倉", unsafe_allow_html=True)
+        st.link_button("🗺️ 路線：門司港 ➡ 小倉車站", "https://maps.app.goo.gl/EZrm7WS4Lcsrj3BN8")
+        st.write("**16:30：** **嗶交通卡進站**，搭乘普通車回小倉 (約 16:45 抵達)。")
+        st.write("**無痛轉乘動作 (與早上相反)：**")
+        st.write("1. 上樓到出站閘門，**嗶交通卡出站** (扣款結清車資)。")
+        st.write("2. 拿出您的**「小倉 ➡ 博多」音速號車票**，放入機器重新進站。尋找特急月台。")
         
-        st.markdown("##### <span class='time-badge'>17:06</span> 回程：音速號 Sonic 42", unsafe_allow_html=True)
-        st.link_button("🗺️ 交通路線：小倉車站 ➡ 博多車站", "https://maps.app.goo.gl/TrgCs6hfxqbpb2Tm8")
+        st.markdown("##### <span class='time-badge'>17:06</span> 【回程】音速號 Sonic 42 (小倉 ➡ 博多)", unsafe_allow_html=True)
+        st.link_button("🗺️ 路線：小倉車站 ➡ 博多車站", "https://maps.app.goo.gl/TrgCs6hfxqbpb2Tm8")
         st.markdown("""
         <div class="ticket-box">
         <b>小倉 17:06 → 博多 17:49</b><br>
@@ -331,18 +358,20 @@ with tab1:
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("##### <span class='time-badge'>18:00</span> 博多站黃金採買動線 (不繞路精華)", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>18:00</span> 【博多站黃金採買動線】(不繞路精華版)", unsafe_allow_html=True)
+        st.write("回到博多站後先不回飯店，直接在車站內「精準打擊」把戰利品和晚餐買齊：")
         st.markdown("""
         <div class="shopping-box">
-        <b>1. 博多銘品藏 (博多口)：</b> 買 <b>努努雞</b> (冰涼酥脆冷吃炸雞)。<br>
-        <b>2. AMANBERRY (AMU PLAZA 1F)：</b> 博多口旁邊，買人氣草莓夾心餅乾。<br>
-        <b>3. LOPIA 超市 (筑紫口 Yodobashi 4F)：</b> 穿過車站到後站上4F，買熟食、披薩、生魚片回飯店開派對！
+        <b>1. 第一站：博多銘品藏 (博多口側)：</b> 目標是買 <b>「努努雞」</b> (冰涼酥脆的冷吃炸雞，九州必吃名物)。<br>
+        <b>2. 第二站：AMANBERRY (AMU PLAZA 1F)：</b> 博多口旁邊的百貨 1F。目標：超人氣的<b>草莓夾心餅乾</b>。<br>
+        <b>3. 第三站：LOPIA 超市 (筑紫口 Yodobashi 4F)：</b> 穿過大廳到後站筑紫口，進 Yodobashi 上 4F。直接買好今晚的熟食、披薩、生魚片、草莓、飲料回飯店開派對！
         </div>
         """, unsafe_allow_html=True)
         st.link_button("📍 導航：LOPIA 博多", "https://www.google.com/maps/search/?api=1&query=ロピア+博多ヨドバシ店")
         
-        st.markdown("##### <span class='time-badge'>19:30</span> 返回飯店", unsafe_allow_html=True)
-        st.write("買完大包小包，直接在筑紫口搭計程車回飯店享用超市大餐！")
+        st.markdown("##### <span class='time-badge'>19:30</span> 【返回飯店】計程車直達", unsafe_allow_html=True)
+        st.write("**動作：** 買完大包小包，直接在筑紫口的計程車排班處上車，跟司機說回 Cross Life 博多柳橋。")
+        st.write("**晚餐：** 在飯店房間內輕鬆享用 LOPIA 超市大餐與努努雞！")
 
     # --- Day 5 ---
     elif "Day 5" in day:
@@ -351,59 +380,71 @@ with tab1:
         if os.path.exists("出國前最終確認：Day 5 (週四) .jpg"):
             st.image("出國前最終確認：Day 5 (週四) .jpg", use_column_width=True)
             
-        st.info("💡 **領隊廣播 (出發前必確認)：**<br>1. **行李放飯店：** 今晚回同一間飯店，大件行李留房間，帶輕便小包出門！<br>2. **車票與交通卡：** 帶好新幹線來回車票。市內路面電車刷交通卡即可 (後門上車嗶，前門下車嗶)。")
+        st.info("💡 **領隊晨間廣播 (出發前必確認)：**<br>1. **行李放飯店：** 今天晚上還會回同一間飯店，大件行李留在飯店房間，大家只要背輕便小包包出門！<br>2. **車票確認：** 確認 4 個人的新幹線來回車票都在身上。<br>3. **交通卡備妥：** 在熊本市區搭乘「路面電車」，上下車直接刷交通卡最方便 (後門上車嗶，前門下車再嗶一次)，不用買一日券。")
         
-        st.markdown("##### <span class='time-badge'>08:00</span> 飯店出發 & 買鐵路便當", unsafe_allow_html=True)
-        st.write("**交通：** 飯店叫計程車直達「博多站 筑紫口」。")
+        st.markdown("##### <span class='time-badge'>08:00</span> 【飯店出發】前往博多車站 (筑紫口)", unsafe_allow_html=True)
+        st.write("**交通：** 直接請飯店叫計程車，跟司機說到 **「博多駅 筑紫口 (Chikushi-guchi)」**。因為新幹線的搭車點和便當店都在這側。")
+        
+        st.markdown("##### <span class='time-badge'>08:10</span> 【早餐任務】駅弁当 (Ekiben Station) 買鐵路便當", unsafe_allow_html=True)
         st.markdown("""
         <div class="bento-box">
-        <b>🍱 早餐任務：駅弁当 (Ekiben Station)</b><br>
-        地點在筑紫口側新幹線改札口附近，帶長輩挑選便當，結帳後進站。
+        <b>地點：</b> 博多站 1F 筑紫口側，就在新幹線改札口附近。<br>
+        <b>動作：</b> 帶長輩來這裡挑選自己喜歡的鐵路便當 (明太子便當、佐賀牛便當等)。結帳後，直接刷票進新幹線閘門。
         </div>
         """, unsafe_allow_html=True)
+        st.link_button("📍 導航：駅弁当 筑紫口店", "https://www.google.com/maps/search/?api=1&query=駅弁当+博多駅")
         
-        st.markdown("##### <span class='time-badge'>08:30</span> 去程：新幹線 Mizuho 601", unsafe_allow_html=True)
-        st.link_button("🗺️ 交通路線：博多車站 ➡ 熊本車站", "https://maps.app.goo.gl/bXPduPfdVgihUVFh8")
+        st.markdown("##### <span class='time-badge'>08:30</span> 【去程】新幹線 Mizuho 601 (博多 ➡ 熊本)", unsafe_allow_html=True)
+        st.link_button("🗺️ 路線：博多車站 ➡ 熊本車站", "https://maps.app.goo.gl/bXPduPfdVgihUVFh8")
         st.markdown("""
         <div class="ticket-box">
         <b>博多 08:30 → 熊本 09:02</b><br>
         座位：<span class="highlight">5 號車 5AB, 6AB</span><br>
-        備註：車程僅 32 分鐘，上車請盡情享用便當！
+        備註：乘車體驗！上車就可以打開便當一邊看風景一邊吃。瑞穗號速度極快，<b>只要 32 分鐘</b>就會抵達熊本！
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("##### <span class='time-badge'>09:40</span> 上午景點：城彩苑 & 熊本城", unsafe_allow_html=True)
-        st.link_button("🗺️ 交通路線：市電 A 系統 ➡ 通町筋(熊本城)", "https://maps.app.goo.gl/WhczLrp8QfC5yJLk7")
-        st.write("**市區移動：** 出站搭市電 A 系統 (往健軍町) 至【熊本城・市役所前】。")
-        st.write("**護膝神仙路線：** 先逛江戶風情的「城彩苑」，然後**絕對不要爬好漢坡**！請尋找「免費接駁巴士」直接搭到天守閣上方廣場，平緩入城最友善。")
+        st.markdown("##### <span class='time-badge'>09:15</span> 【市區移動】搭乘熊本市電", unsafe_allow_html=True)
+        st.write("**動線：** 出熊本車站後，走到站前的「市電乘車處」。")
+        st.write("**搭車：** 搭乘 **A 系統（紅線，往健軍町方向）**。在 **【熊本城・市役所前】** 站下車。")
+        st.link_button("🗺️ 路線：市電 A 系統 ➡ 通町筋(熊本城)", "https://maps.app.goo.gl/WhczLrp8QfC5yJLk7")
+        
+        st.markdown("##### <span class='time-badge'>09:40</span> 【上午景點】櫻之馬場 城彩苑 & 熊本城", unsafe_allow_html=True)
+        st.write("**第一站 (城彩苑)：** 步行 3 分鐘先到仿江戶時代的城下町「城彩苑」，有很多好拍的街景和特色小吃 (海膽可樂餅、芥末蓮藕)。")
+        st.write("💡 **護膝神仙路線 (前往天守閣)：** **絕對不要帶長輩爬好漢坡！** 請在城彩苑尋找 **「免費接駁巴士」**，它會直接把您們載到熊本城上方的廣場，走平緩的空中步道進天守閣，對長輩膝蓋最友善！")
         st.link_button("📍 導航：櫻之馬場 城彩苑", "https://www.google.com/maps/search/?api=1&query=桜の馬場+城彩苑")
         st.link_button("📍 導航：熊本城", "https://www.google.com/maps/search/?api=1&query=熊本城")
         
-        st.markdown("##### <span class='time-badge'>11:30</span> 午餐：勝烈亭豬排 (新市街本店)", unsafe_allow_html=True)
-        st.write("搭市電到【辛島町站】走 2 分鐘。提早抵達完美避開上班族人潮，必點「六白黑豚」定食，肉質軟嫩長輩咬得動。")
+        st.markdown("##### <span class='time-badge'>11:30</span> 【午餐】勝烈亭豬排 (新市街本店)", unsafe_allow_html=True)
+        st.write("**移動：** 從熊本城搭市電，搭到 **【辛島町站】** 下車，走 2 分鐘。")
+        st.write("**策略：** 11:30 抵達可以完美避開中午 12:00 的上班族排隊人潮。")
+        st.write("**必點：** 「六白黑豚」炸豬排定食。肉質軟嫩多汁，長輩絕對咬得動！")
         st.link_button("📍 導航：勝烈亭 新市街", "https://www.google.com/maps/search/?api=1&query=勝烈亭+新市街本店")
         
-        st.markdown("##### <span class='time-badge'>13:30</span> 午後散策：下通商店街 & 尋找熊本熊", unsafe_allow_html=True)
-        st.write("吃飽沿有屋頂的下通商店街往北逛到「鶴屋百貨」。若想看熊本熊部長本尊，請提早於 **14:30** 去部長辦公室卡位。")
+        st.markdown("##### <span class='time-badge'>13:30</span> 【午後散策】下通商店街 & 尋找熊本熊", unsafe_allow_html=True)
+        st.write("**動線：** 餐廳外面就是熱鬧的 **「下通商店街」**，有拱廊不怕風吹日曬。一路往北走約 15 分鐘會連通到「鶴屋百貨」。")
+        st.write("🌟 **熊本熊部長辦公室 (Kumamon Square)：** 熊本熊大本營！若想看本尊的下午 15:00 見面會表演，記得 **14:30** 就要去卡位，人會非常多！")
         st.link_button("📍 導航：熊本熊部長辦公室", "https://www.google.com/maps/search/?api=1&query=Kumamon+Square")
         
-        st.markdown("##### <span class='time-badge'>17:00</span> 熊本車站採買：肥後よかモン市場", unsafe_allow_html=True)
-        st.link_button("🗺️ 交通路線：通町筋 ➡ 熊本車站", "https://maps.app.goo.gl/mFG4fTckyxgFPxXH9")
-        st.write("從通町筋搭市電回熊本站。進站前在改札口正對面的市場買 **熊本熊圓形便當 (空盒可微波，必買)** 或阿蘇赤牛便當當宵夜。")
+        st.markdown("##### <span class='time-badge'>17:00</span> 【熊本車站採買】肥後よかモン市場", unsafe_allow_html=True)
+        st.link_button("🗺️ 路線：通町筋 ➡ 熊本車站", "https://maps.app.goo.gl/mFG4fTckyxgFPxXH9")
+        st.write("**搭車：** 從水道町或通町筋搭市電 A 系統回到熊本車站。")
+        st.write("**目標：** 新幹線改札口正對面的市場。必買 **「熊本熊圓形便當」** (可重複微波使用的便當盒當紀念)，或買個阿蘇赤牛便當當宵夜。")
+        st.link_button("📍 導航：肥後よかモン市場", "https://www.google.com/maps/search/?api=1&query=肥後よかモン市場")
         
-        st.markdown("##### <span class='time-badge'>17:20</span> 回程：新幹線 Tsubame 328 (燕子號)", unsafe_allow_html=True)
-        st.link_button("🗺️ 交通路線：熊本車站 ➡ 博多車站", "https://maps.app.goo.gl/3H5Nmctx35eenUu5A")
+        st.markdown("##### <span class='time-badge'>17:20</span> 【回程】新幹線 Tsubame 328 (燕子號)", unsafe_allow_html=True)
+        st.link_button("🗺️ 路線：熊本車站 ➡ 博多車站", "https://maps.app.goo.gl/3H5Nmctx35eenUu5A")
         st.markdown("""
         <div class="ticket-box">
         <b>熊本 17:20 → 博多 18:09</b><br>
         座位：<span class="highlight">5 號車 6AB, 7AB</span><br>
-        備註：燕子號木質內裝極美，提早回博多，從容吃晚餐！
+        備註：燕子號的木質內裝非常有設計感，剛好讓長輩在車上休息補眠。提早回博多，從容吃晚餐！
         </div>
         """, unsafe_allow_html=True)
         
-        st.markdown("##### <span class='time-badge'>18:50</span> 終極晚餐：吉塚鰻魚屋", unsafe_allow_html=True)
-        st.write("**交通：** 抵達博多站後出博多口搭計程車。")
-        st.write("**美味推薦：** 福岡第一的百年老店。點「鰻重」(飯與鰻魚分開裝)，享受表皮極致酥脆、肉質軟嫩的最高潮晚餐！吃飽可散步回飯店。")
+        st.markdown("##### <span class='time-badge'>18:50</span> 【百年美味】吉塚鰻魚屋 (本店)", unsafe_allow_html=True)
+        st.write("**交通：** 抵達博多站後，往 **「博多口」** 方向出站，直接搭計程車 (車程 10 分鐘內)。")
+        st.write("**點餐建議：** 被譽為福岡第一的百年鰻魚飯老店。推薦點 **「鰻重 (Unaju)」** (飯與鰻魚分開裝)，表皮烤得極度酥脆，肉質軟嫩，絕對是整趟旅程的美食最高潮！吃飽後若天氣好可沿那珂川散步回飯店，或直接攔車。")
         st.link_button("📍 導航：吉塚鰻魚屋 本店", "https://www.google.com/maps/search/?api=1&query=吉塚うなぎ屋")
 
     # --- Day 6 ---
@@ -413,33 +454,43 @@ with tab1:
         if os.path.exists("出國前最終確認：Day 6 (週五) .jpg"):
             st.image("出國前最終確認：Day 6 (週五) .jpg", use_column_width=True)
             
-        st.warning("⚠️ **行李整理大魔王提醒：** 草莓當早餐吃完！明太子(軟管/盒裝)與布丁/果凍屬於**液體膏狀**，絕對不能放隨身包，必須放進托運行李！")
+        st.warning("⚠️ **行李整理大魔王提醒：** 昨晚買的草莓請當早餐吃完，不能帶回台灣！「明太子（軟管或盒裝）」和「布丁/果凍」在飛安規定上屬於**液體/膏狀物**，請務必塞進「托運行李」中，絕對不能放在隨身手提包包，否則安檢會被丟掉！")
         
-        st.markdown("##### <span class='time-badge'>07:30</span> 早鳥專屬：柳橋連合市場", unsafe_allow_html=True)
-        st.write("長輩若早起，可去旁邊市場買手工甜不辣或感受在地早晨活力。")
+        st.markdown("##### <span class='time-badge'>07:30</span> 【早鳥專屬】柳橋連合市場 (最後巡禮)", unsafe_allow_html=True)
+        st.write("從飯店走出去 1 分鐘就到。長輩如果起得早，可以去市場買個現炸的手工魚板（甜不辣）當早餐，或是感受一下在地傳統市場的早晨活力。")
         
-        st.markdown("##### <span class='time-badge'>08:50</span> 辦理退房", unsafe_allow_html=True)
-        st.write("整理好大件行李，於一樓櫃台辦理退房並寄放行李 (Luggage keep)，帶隨身小包出門衝刺。")
+        st.markdown("##### <span class='time-badge'>08:50</span> 【辦理退房】行李寄放櫃台", unsafe_allow_html=True)
+        st.write("**動作：** 將所有大件行李整理好，到一樓櫃台辦理 Check-out。")
+        st.write("**寄放：** 把大行李寄放在櫃台（跟櫃台說 \"Luggage keep, please\"），全家人只要帶著隨身小包包出門做最後衝刺！")
         
-        st.markdown("##### <span class='time-badge'>09:10</span> 甜點任務：I'm donut ? (天神店)", unsafe_allow_html=True)
-        st.write("**戰術分工：** 福岡最紅生甜甜圈排隊可怕。年輕人去排隊，請長輩去對面「大丸百貨」外面椅子休息。")
+        st.markdown("##### <span class='time-badge'>09:10</span> 【甜點任務】I'm donut ? (天神店)", unsafe_allow_html=True)
+        st.write("**移動：** 從飯店慢慢散步前往天神南區域（約 10 分鐘）。")
+        st.write("**戰術分工：** 福岡目前最紅的生甜甜圈名店，排隊人潮非常可怕。年輕人負責排隊，**請長輩到對面的「大丸百貨」外面的椅子坐著休息，千萬別讓長輩跟著罰站！**")
         st.link_button("📍 導航：I'm donut ? 天神店", "https://www.google.com/maps/search/?api=1&query=I'm+donut+天神店")
         
-        st.markdown("##### <span class='time-badge'>10:00</span> 備用行程：大丸百貨地下街", unsafe_allow_html=True)
-        st.write("若甜甜圈排太長，直接殺進大丸 B2 挑選高級精緻和菓子/洋菓子完美取代。")
+        st.markdown("##### <span class='time-badge'>10:00</span> 【備用行程】大丸百貨 (福岡天神店)", unsafe_allow_html=True)
+        st.write("**動作：** 10:00 百貨公司準時開門，長輩可以進去上個乾淨的廁所。")
+        st.write("**備案買法：** 如果甜甜圈排太長決定放棄，直接帶長輩殺進大丸百貨地下街 (B2)，挑選幾家精緻的和菓子或洋菓子，完美取代甜甜圈。")
         st.link_button("📍 導航：大丸福岡天神店", "https://www.google.com/maps/search/?api=1&query=大丸福岡天神店")
         
-        st.markdown("##### <span class='time-badge'>10:20</span> 返回飯店領行李 & 叫車赴機場", unsafe_allow_html=True)
-        st.error("🛑 **關鍵交通：絕對不要去搭地鐵轉接駁巴士！** 請直接請飯店叫計程車，或路邊攔車，跟司機說「福岡空港 國際線」。高速直達只需 15-20 分鐘，CP值最高！")
+        st.markdown("##### <span class='time-badge'>10:20</span> 【返回飯店】領行李與叫車", unsafe_allow_html=True)
+        st.error("🛑 **關鍵交通：絕對不要去搭地鐵轉接駁巴士！** (對長輩提大行李非常折磨)")
+        st.write("**動作：** 回飯店拿大行李，直接請飯店櫃檯幫忙叫計程車，或是走到大馬路上攔車。")
+        st.write("**跟司機說：** **「Fukuoka Kūkō, Kokusai-sen (福岡空港 國際線)」**。走高速公路直達約 15-20 分鐘，這是全趟旅程 CP 值最高的一趟計程車。")
         
-        st.markdown("##### <span class='time-badge'>10:45</span> 抵達機場 & 免稅店大採購", unsafe_allow_html=True)
-        st.write("長榮航空報到與托運行李 (再次確認明太子托運)。")
-        st.write("**免稅必買：** 過海關後鎖定 **「福砂屋長崎蛋糕」** (雙目糖底極品) 與保冷袋裝明太子。留一人注意登機時間。")
+        st.markdown("##### <span class='time-badge'>10:45</span> 【抵達機場】福岡機場國際線 3F 出境大廳", unsafe_allow_html=True)
+        st.write("**流程：** 找到**長榮航空 (EVA Air)**報到櫃台 ➡ 托運行李 (再次確認明太子已托運) ➡ 領取登機證 ➡ 過安檢 ➡ 過海關。")
         
-        st.markdown("##### <span class='time-badge'>12:15</span> 班機起飛 (BR105)", unsafe_allow_html=True)
-        st.write("滿載而歸，機上吃午餐補眠。**13:50 降落桃園機場 T2**。悠哉過海關拿行李，推推車搭機捷往桃園高鐵站 (車程16分)。")
+        st.markdown("##### <span class='time-badge'>11:15</span> 【最後衝刺】機場免稅店大採購", unsafe_allow_html=True)
+        st.write("**免稅必買：**")
+        st.write("1. **福砂屋 長崎蛋糕 (Castella)：** 底下有雙目糖顆粒的極品，買回家配茶最棒。")
+        st.write("2. **明太子系列：** 如果市區沒買夠，這裡有保冷袋包裝的明太子可以安心帶上飛機。")
+        st.write("*溫馨提醒：結帳排隊人潮可能很多，請留一位家人注意登機時間。*")
         
-        st.markdown("##### <span class='time-badge'>16:34</span> 平安返家：高鐵 841 車次", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>12:15</span> 【起飛】長榮航空 BR105", unsafe_allow_html=True)
+        st.write("帶著滿滿的戰利品與美好回憶，在飛機上吃頓飛機餐睡個午覺。**13:50 平安降落台灣桃園國際機場 (T2)**。慢慢拿行李出關，搭機捷至高鐵桃園站 (車程約 16 分鐘)。")
+        
+        st.markdown("##### <span class='time-badge'>16:34</span> 【平安返家】高鐵 841 車次", unsafe_allow_html=True)
         st.markdown("""
         <div class="ticket-box">
         <b>桃園 16:34 → 台中 17:15</b><br>
