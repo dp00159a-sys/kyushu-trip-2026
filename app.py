@@ -8,7 +8,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 # 1. App 基礎設定
 # --------------------------
 st.set_page_config(
-    page_title="2026 北九州行",
+    page_title="2026 九州行",
     page_icon="APP圖示.png",
     layout="centered",
     initial_sidebar_state="collapsed"
@@ -90,7 +90,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("🎌 2026 北九州行")
+st.title("🎌 2026 九州行")
 st.caption("Family Trip: 2026/3/1 (日) - 3/6 (五) | 全數票券與詳細動線已鎖定 ✅")
 
 # --------------------------
@@ -817,4 +817,5 @@ with tab4:
         st.error("⚠️ 無法連線至 Google Sheets。請確認金鑰設定是否正確，或是試算表是否已開啟共用。")
         st.caption("開發人員錯誤訊息檢視：")
         st.code(str(e))
+
 
