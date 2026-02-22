@@ -118,7 +118,7 @@ with tab1:
             
         st.info("""
         💡 **出發前溫馨提醒 (領隊廣播)：**
-        請務必提醒家人要帶上「日本的交通卡」(Suica、ICOCA 等)。雖然現場買實體票也可以，但帶著長輩拉行李，能直接「嗶」卡進出站，絕對會讓旅程一開始就順暢無比！
+        請務必提醒家人要帶上「日本的交通卡」(Suica、ICOCA 等)。如果家人沒有，我們抵達福岡機場後第一件事就是去機台買卡！帶著長輩拉行李，能直接「嗶」卡進出站，絕對會讓旅程一開始就順暢無比！
         """)
         
         st.markdown("##### <span class='time-badge'>12:00</span> 【台灣出發】前往機場", unsafe_allow_html=True)
@@ -138,7 +138,7 @@ with tab1:
         with st.expander("🎥 機場實景走法參考影片 (從下飛機到搭巴士)"):
             st.video("https://www.youtube.com/watch?v=pRwDSFJskzQ")
         
-       st.markdown("##### <span class='time-badge'>21:20</span> 【市區移動】購卡與地鐵轉乘 (機場 ➡ 飯店)", unsafe_allow_html=True)
+        st.markdown("##### <span class='time-badge'>21:20</span> 【市區移動】購卡與地鐵轉乘 (機場 ➡ 飯店)", unsafe_allow_html=True)
         
         st.warning("""
         💳 **領隊首要任務：購買 3 張交通卡 (はやかけん Hayakaken)**
@@ -827,6 +827,7 @@ with tab4:
         st.error("⚠️ 無法連線至 Google Sheets。請確認金鑰設定是否正確，或是試算表是否已開啟共用。")
         st.caption("開發人員錯誤訊息檢視：")
         st.code(str(e))
+
 
 
 
