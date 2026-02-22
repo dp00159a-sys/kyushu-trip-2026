@@ -138,8 +138,18 @@ with tab1:
         with st.expander("🎥 機場實景走法參考影片 (從下飛機到搭巴士)"):
             st.video("https://www.youtube.com/watch?v=pRwDSFJskzQ")
         
-        st.markdown("##### <span class='time-badge'>21:20</span> 【市區移動】地鐵轉乘 (機場 ➡ 飯店)", unsafe_allow_html=True)
-        st.write("**進站：** 拿出準備好的交通卡 (Suica/ICOCA) 感應進站。")
+       st.markdown("##### <span class='time-badge'>21:20</span> 【市區移動】購卡與地鐵轉乘 (機場 ➡ 飯店)", unsafe_allow_html=True)
+        
+        st.warning("""
+        💳 **領隊首要任務：購買 3 張交通卡 (はやかけん Hayakaken)**
+        搭乘手扶梯下樓，在準備進「福岡機場地下鐵站」閘門前，旁邊有一排自動售票機。
+        1. 點擊螢幕右上角切換為 **「繁體中文」**。
+        2. 選擇螢幕上的 **「IC卡 (はやかけん)」** ➡ **「購買新卡」**。
+        3. 直接選擇 **「5,000 日圓」** (含 500 日圓押金，可用餘額 4,500，這 6 天絕對夠用！)。
+        4. 重複買 3 張，全家人就能一人一卡，帥氣「嗶」進站！
+        """)
+        
+        st.write("**進站：** 全員拿出交通卡 (Suica/Hayakaken) 感應進站。")
         st.markdown("""
         <div class="route-box">
         <b>第一段：福岡市地下鐵 空港線 (Kuko Line)</b><br>
@@ -817,6 +827,7 @@ with tab4:
         st.error("⚠️ 無法連線至 Google Sheets。請確認金鑰設定是否正確，或是試算表是否已開啟共用。")
         st.caption("開發人員錯誤訊息檢視：")
         st.code(str(e))
+
 
 
 
