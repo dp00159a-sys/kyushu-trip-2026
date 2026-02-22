@@ -9,7 +9,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 # --------------------------
 st.set_page_config(
     page_title="2026 北九州行",
-    page_icon="🎌",
+    page_icon="APP圖示.png",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
@@ -817,3 +817,4 @@ with tab4:
         st.error("⚠️ 無法連線至 Google Sheets。請確認金鑰設定是否正確，或是試算表是否已開啟共用。")
         st.caption("開發人員錯誤訊息檢視：")
         st.code(str(e))
+
